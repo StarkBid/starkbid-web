@@ -12,6 +12,9 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      maxWidth: {
+        screen3xl: '2560px',
+      },
     },
   },
   plugins: [],

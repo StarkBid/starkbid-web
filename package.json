@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@hookform/resolvers": "^4.1.0",
     "framer-motion": "^12.4.7",
     "lucide-react": "^0.475.0",

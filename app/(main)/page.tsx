@@ -1,4 +1,5 @@
 import TrendingNft from '@/components/landing-page/trending-nft'
+import YouMayAlsoLike from '@/components/landing-page/you-may-also-like'
 
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <div className="min-h-screen bg-black">
       <main className=" flex flex-col gap-20 px-4 sm">
         <TrendingNft/>
+        <YouMayAlsoLike/>
       </main>
     </div>
   );

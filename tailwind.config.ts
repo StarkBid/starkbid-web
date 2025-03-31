@@ -22,6 +22,7 @@ export default {
         misty_white: "#FFFFFFE5",
         text_grey: "#414651",
         soft_grey: "#A1A1A1",
+        card_border: "#292929",
       },
       fontSize: {},
     },

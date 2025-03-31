@@ -1,5 +1,5 @@
 import TrendingNft from '@/components/landing-page/trending-nft'
-import YouMayAlsoLike from '@/components/landing-page/you-may-also-like'
+import YouMayAlsoLike from '@/components/landing-page/you-may-be-interested'
 
 
 export default function Home() {

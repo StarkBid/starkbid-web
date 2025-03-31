@@ -110,6 +110,141 @@ export const nftData: NFTCardProps[] = [
   },
 ];
 
+  
+  export const trendingCollections = [
+    {
+      id: 1,
+      name: 'Xenos',
+      icon: '/collections_icons/xenos.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '+20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 2,
+      name: 'Bored Apes',
+      icon: '/collections_icons/bored_ape.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '-20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 3,
+      name: 'Monalissa',
+      icon: '/collections_icons/monalisa.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '-20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 4,
+      name: 'Bad Bunniez',
+      icon: '/collections_icons/bad_bunniez.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '-20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 5,
+      name: 'Mickymore',
+      icon: '/collections_icons/micky_moore.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '+20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 6,
+      name: 'Zam Califoral',
+      icon: '/collections_icons/zain_califoral.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '-20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 7,
+      name: 'The Vagaaburn',
+      icon: '/collections_icons/the_vagaaburn.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '+20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 8,
+      name: 'Bullies',
+      icon: '/collections_icons/bullies.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '+20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 9,
+      name: 'Dan Xylym',
+      icon: '/collections_icons/Dan_xylym.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '-20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    },
+    {
+      id: 10,
+      name: 'Net Dream',
+      icon: '/collections_icons/netDream.svg',
+      floorPrice: '35 ETH',
+      volume: '200 ETH',
+      topOffer: '31 ETH',
+      change: '-20.40%',
+      sales: 150,
+      totalVolume: '456.00k',
+      holder: 45,
+      rate:'2065/1498'
+    }
+  ];
+  
+
 export interface ArticleProps {
   id: number;
   title: string;

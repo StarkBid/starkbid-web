@@ -86,7 +86,7 @@ const TrendingNFTs: React.FC = () => {
   const [activeTab, setActiveTab] = useState('trending');
 
   return (
-    <div className="bg-black text-white py-6 px-[1.1em] max-w-8xl mx-auto">
+    <div className="bg-black text-white p-6 max-w-[1419] mx-auto ">
       <div className="flex gap-[1em] mb-8">
         <button
           className={`px-2 py-1 ${activeTab === 'trending' ? 'text-white font-bold  text-xl bg-[#1C1D1F] px-4 py-2 rounded-md' : 'text-gray-500  text-xl'}`}

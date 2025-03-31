@@ -1,4 +1,6 @@
+import TrendingCollections from '@/components/landing-page/trending-collections';
 import TrendingNft from '@/components/landing-page/trending-nft'
+import Newsletter from '@/components/newsletter';
 import YouMayAlsoLike from '@/components/landing-page/you-may-be-interested'
 
 
@@ -7,6 +9,7 @@ export default function Home() {
     <div className="min-h-screen bg-black">
       <main className=" flex flex-col gap-20 px-4 sm">
         <TrendingNft/>
+        <Newsletter/>
         <YouMayAlsoLike/>
       </main>
     </div>

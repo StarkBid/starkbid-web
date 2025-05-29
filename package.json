@@ -14,7 +14,7 @@
     "@starknet-react/core": "^3.7.2",
     "framer-motion": "^12.4.7",
     "lucide-react": "^0.475.0",
-    "next": "15.1.6",
+    "next": "^15.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.54.2",

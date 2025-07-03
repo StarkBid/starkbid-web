@@ -10,6 +10,7 @@ export interface NFTGridProps {
     title: string;
     description: string;
   };
+  gridColsClass?: string;
 }
 
 export interface NFTGridConfig {

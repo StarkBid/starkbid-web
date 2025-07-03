@@ -4,6 +4,7 @@ import React from 'react';
 import NFTCard from '../NFTCard/NFTCard';
 import { NFTGridProps } from './NFTGrid.types';
 import { useInfiniteGrid } from '../hooks/useInfiniteGrid';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const NFTGrid: React.FC<NFTGridProps> = ({
   items,
@@ -12,6 +13,7 @@ const NFTGrid: React.FC<NFTGridProps> = ({
   hasMore,
   onLoadMore,
   emptyState,
+  gridColsClass,
 }) => {
   const { lastItemRef } = useInfiniteGrid({
     loading,
@@ -72,22 +74,29 @@ const NFTGrid: React.FC<NFTGridProps> = ({
   return (
     <div className="space-y-6">
       <div 
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${gridColsClass || 'lg:grid-cols-4'} gap-6`}
         aria-busy={loading ? "true" : "false"}
       >
-        {items.map((item, index) => (
-          <div
-            key={`${item.id}-${index}`}
-            ref={index === items.length - 1 ? lastItemRef : null}
-          >
-            <NFTCard nft={item} />
-          </div>
-        ))}
+        <AnimatePresence initial={false}>
+          {items.map((item, index) => (
+            <motion.div
+              key={`${item.id}-${index}`}
+              ref={index === items.length - 1 ? lastItemRef : null}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.25, ease: 'easeInOut' }}
+              layout
+            >
+              <NFTCard nft={item} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
 
       {loading && items.length > 0 && (
         <div 
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${gridColsClass || 'lg:grid-cols-4'} gap-6`}
           aria-live="polite"
         >
           {Array(4).fill(0).map((_, i) => (

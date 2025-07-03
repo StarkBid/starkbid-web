@@ -24,3 +24,35 @@ export interface Collection {
     twitter?: string;
   };
 }
+
+
+export interface AboutTabProps {
+  collection: CollectionData;
+  isActive?: boolean;
+}
+
+export interface CollectionData {
+  id: string;
+  name: string;
+  description: string;
+  longDescription?: string;
+  featuredImage: string;
+  createdDate: string;
+  creator: CreatorProfile;
+  contributors?: CreatorProfile[];
+  stats?: CollectionStats;
+}
+
+export interface CreatorProfile {
+  id: string;
+  name: string;
+  handle?: string;
+  avatar: string;
+  role: string;
+  profileUrl?: string;
+  socialLinks?: {
+    twitter?: string;
+    discord?: string;
+    website?: string;
+  };
+}

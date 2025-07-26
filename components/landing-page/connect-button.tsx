@@ -1,17 +1,17 @@
 import React, { useRef, useEffect, useState } from "react";
-import { useAccount, useConnect, useDisconnect, Connector } from "@starknet-react/core";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { useAccount, useConnect, Connector } from "@starknet-react/core";
 import Image from "next/image";
+import UserProfileModal from "./user-profile-modal";
 
-// Function to truncate address for display
-const truncateAddress = (address: string) => {
+const truncateAddressShort = (address: string) => {
   if (!address) return "";
-  return `${address.slice(0, 6)}...${address.slice(-4)}`;
+  return `${address.slice(0, 5)}...`;
 };
 
 export function ConnectButton() {
   const { connect, connectors } = useConnect();
   const { isConnected, address } = useAccount();
-  const { disconnect } = useDisconnect();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -20,7 +20,10 @@ export function ConnectButton() {
   // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsDropdownOpen(false);
       }
     }
@@ -37,37 +40,34 @@ export function ConnectButton() {
     setIsModalOpen(false);
   };
 
-  // Handle wallet disconnection
-  const handleDisconnect = () => {
-    disconnect();
-    setIsDropdownOpen(false);
-  };
-
   return (
     <div className="relative" ref={dropdownRef}>
       {isConnected && address ? (
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex items-center gap-2 bg-[#1C1D1F] text-white rounded-md hover:bg-[#2a2b2e] transition-colors"
+            className="flex items-center m-2 px-6 py-4 gap-4 bg-[#1C1D1F] text-white rounded-[16px] hover:bg-[#2a2b2e] transition-colors box-shadow: 0px 1.08px 2.16px 0px #1018280A"
           >
-            <Image src="/1.png" alt="profile" width={20} height={23} className="rounded-full" />
-            {truncateAddress(address)}
-            <span
-              className={`border-white border-b-2 border-r-2 inline-block w-2 h-2 transform
-                ${isDropdownOpen ? 'rotate-45 mb-1' : '-rotate-45'}`}
-            />
-          </button>
-
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-[#1C1D1F] overflow-hidden rounded-md shadow-lg z-10">
-              <button
-                onClick={handleDisconnect}
-                className="w-full text-left px-4 py-2 hover:bg-[#2a2b2e] transition-colors"
-              >
-                Disconnect Wallet
-              </button>
+            <div>
+              <Image
+                src="/profile.png"
+                alt="profile"
+                width={30}
+                height={30}
+                className="rounded-full"
+              />
             </div>
+            <div className="flex items-center font-semibold text-[16px] gap-2">
+              {truncateAddressShort(address)}
+              {isDropdownOpen ? <ChevronUp /> : <ChevronDown size={22} />}
+            </div>
+          </button>
+          {isDropdownOpen && (
+            <UserProfileModal
+              isDropdownOpen={isDropdownOpen}
+              setIsDropdownOpen={setIsDropdownOpen}
+              address={address}
+            />
           )}
         </div>
       ) : (
@@ -108,11 +108,13 @@ export function ConnectButton() {
                     onClick={() => handleConnect(connector)}
                     disabled={!isAvailable}
                     className={`w-full flex items-center gap-4 p-3 rounded-lg  transition-all
-                      ${isAvailable
-                        ? 'hover:bg-[#191c1d] hover:shadow-md cursor-pointer'
-                        : 'opacity-50 cursor-not-allowed'}`}
+                      ${
+                        isAvailable
+                          ? "hover:bg-[#191c1d] hover:shadow-md cursor-pointer"
+                          : "opacity-50 cursor-not-allowed"
+                      }`}
                   >
-                    {typeof connector.icon === 'string' && (
+                    {typeof connector.icon === "string" && (
                       <Image
                         width={32}
                         height={32}
@@ -130,8 +132,6 @@ export function ConnectButton() {
                   </button>
                 );
               })}
-
-
             </div>
           </div>
         </div>

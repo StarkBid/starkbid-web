@@ -6,6 +6,7 @@ import { profileMockNFTs } from "../../lib/mockData";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import ActivityTab from "../activity";
+import ProfileCollectionsGrid from "./ProfileCollectionsGrid";
 
 const tabs = [
   { id: "owned", label: "Owned Items", active: true },
@@ -60,7 +61,7 @@ export default function CollectionTabs() {
         )}
         {activeTab === "collections" && (
           <Suspense fallback={<div className="p-6">Loading...</div>}>
-            <NftViewer mockNFTs={profileMockNFTs} />
+            <ProfileCollectionsGrid />
           </Suspense>
         )}
         {activeTab === "offers" && (

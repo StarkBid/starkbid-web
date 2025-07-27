@@ -1,5 +1,5 @@
-import { MyProfilePage } from "@/components/settings/my-profile-page"
-
-export default function ProfilePage() {
-  return <MyProfilePage />
+function page() {
+  return <div>profile page</div>;
 }
+
+export default page;

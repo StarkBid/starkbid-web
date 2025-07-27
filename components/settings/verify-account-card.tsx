@@ -1,18 +1,9 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
 
 export function VerifyAccountCard() {
   return (
     <div className="relative rounded-lg overflow-hidden">
-      <Button
-        variant="ghost"
-        size="icon"
-        className="absolute top-2 right-2 h-6 w-6 text-white hover:bg-white/20 z-10"
-      >
-        <X className="h-3 w-3" />
-      </Button>
-
       <div className="relative h-24 w-full">
         <Image
           src="/verify-shield.png"

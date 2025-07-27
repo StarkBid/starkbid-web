@@ -1,5 +1,5 @@
-import { DevelopersPage } from "@/components/settings/developers-page"
-
-export default function DevelopersSettingsPage() {
-  return <DevelopersPage />
+function page() {
+  return <div>Developer page</div>;
 }
+
+export default page;

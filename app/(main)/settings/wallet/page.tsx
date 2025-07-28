@@ -27,8 +27,3 @@ export default function WalletPage() {
     </div>
   );
 }
-function page() {
-  return <div>wallet page</div>;
-}
-
-export default page;

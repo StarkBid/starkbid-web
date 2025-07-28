@@ -26,9 +26,4 @@ export default function ProfileSettingsPage() {
       </Card>
     </div>
   );
-} 
-function page() {
-  return <div>profile page</div>;
 }
-
-export default page;

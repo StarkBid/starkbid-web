@@ -230,3 +230,8 @@ export default function DevelopersPage() {
     </div>
   );
 } 
+function page() {
+  return <div>Developer page</div>;
+}
+
+export default page;

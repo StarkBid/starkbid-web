@@ -26,4 +26,9 @@ export default function VerificationPage() {
       </Card>
     </div>
   );
-} 
+}
+function page() {
+  return <div>verification page</div>;
+}
+
+export default page;

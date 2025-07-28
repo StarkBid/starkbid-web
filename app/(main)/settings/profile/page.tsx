@@ -27,3 +27,8 @@ export default function ProfileSettingsPage() {
     </div>
   );
 } 
+function page() {
+  return <div>profile page</div>;
+}
+
+export default page;

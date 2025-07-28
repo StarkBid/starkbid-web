@@ -26,4 +26,9 @@ export default function WalletPage() {
       </Card>
     </div>
   );
-} 
+}
+function page() {
+  return <div>wallet page</div>;
+}
+
+export default page;

@@ -182,7 +182,7 @@ export default function DevelopersPage() {
           {/* Help Text */}
           <div className="text-sm text-ash space-y-2">
             <p>
-              • You'll receive a verification email with instructions to confirm your email address
+              • You&appos;ll receive a verification email with instructions to confirm your email address
             </p>
             <p>
               • Once verified, you'll gain access to our developer API and documentation

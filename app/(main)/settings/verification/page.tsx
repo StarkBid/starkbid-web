@@ -27,8 +27,3 @@ export default function VerificationPage() {
     </div>
   );
 }
-function page() {
-  return <div>verification page</div>;
-}
-
-export default page;

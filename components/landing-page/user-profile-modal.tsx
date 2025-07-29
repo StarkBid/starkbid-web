@@ -4,7 +4,17 @@ import { useDisconnect } from "@starknet-react/core";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-const UserProfileModal = ({ isDropdownOpen, setIsDropdownOpen, address }) => {
+type UserProfileModalProps = {
+  isDropdownOpen: boolean;
+  setIsDropdownOpen: (open: boolean) => void;
+  address: string;
+};
+
+const UserProfileModal = ({
+  isDropdownOpen,
+  setIsDropdownOpen,
+  address,
+}: UserProfileModalProps) => {
   const [isVerified, setIsVerified] = useState(false);
 
   const NavigationMenu = [
@@ -150,7 +160,7 @@ const UserProfileModal = ({ isDropdownOpen, setIsDropdownOpen, address }) => {
   };
 
   // Handle backdrop click to close modal
-  const handleBackdropClick = (e) => {
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
       setIsDropdownOpen(false);
     }

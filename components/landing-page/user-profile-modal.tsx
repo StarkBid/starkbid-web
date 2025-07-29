@@ -171,7 +171,7 @@ const UserProfileModal = ({
       className="fixed inset-0 z-[1000] backdrop-blur-[1px] flex items-start justify-end p-4"
       onClick={handleBackdropClick}
     >
-      <div className="mt-10 mr-10 bg-[#101213] rounded-[12px] px-[25px] py-[35px] border-[4px] border-[#292929] max-h-[calc(100vh-80px)] overflow-y-auto overflow-x-hidden">
+      <div className="mt-10 mr-10 bg-[#101213] rounded-[12px] px-[25px] py-[35px] border-[4px] border-[#292929] max-h-[calc(100vh-80px)] overflow-y-auto overflow-x-hidden scrollbar-hide">
         <div className="w-[341px] flex flex-col gap-[25px]">
           <div className="flex justify-between">
             <div className="flex gap-[15px] items-center">

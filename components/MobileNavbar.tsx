@@ -7,14 +7,12 @@ import { Button } from "@/components/ui/button";
 import { navItems } from "@/constants/navbar";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { useAccount } from "@starknet-react/core";
 import { ConnectButton } from "@/components/landing-page/connect-button";
 
 
 
 const MobileNavbar: React.FC = () => {
-  const pathname = usePathname();
   const { isConnected, address } = useAccount();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isCreateExploreOpen, setIsCreateExploreOpen] = useState(false);

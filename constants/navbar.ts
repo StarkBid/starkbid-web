@@ -1,9 +1,9 @@
 export const navItems = [
     {
-      name: "NFTs",
-      path: "/nfts",
-      icon: "/svgs/nft.svg",
-      activeIcon: "/svgs/nft-active.svg",
+      name: "Create",
+      path: "/create",
+      icon: "/svgs/create-active.svg",
+      activeIcon: "/svgs/create-active.svg",
     },
     {
       name: "Explore",

@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full hidden md:block">
       <nav className="max-w-[1440px] w-full mx-auto text-white flex items-center justify-between px-2 sm:px-4 py-2 border-b border-b-darkerGray">
         <div className="flex items-center gap-x-2 sm:gap-x-4 lg:gap-x-6 flex-1 min-w-0">
           {/* Mobile Settings Menu Toggle - Only show on settings pages */}

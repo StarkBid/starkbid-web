@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -72,20 +74,17 @@ export default {
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
-    // Custom plugin to hide scrollbars
-    function ({ addUtilities }) {
+    animate,
+    plugin(({ addUtilities }) => {
       addUtilities({
         ".scrollbar-hide": {
-          /* Firefox */
           "scrollbar-width": "none",
-          /* IE 10+ */
           "-ms-overflow-style": "none",
         },
         ".scrollbar-hide::-webkit-scrollbar": {
           display: "none",
         },
       });
-    },
+    }),
   ],
 } satisfies Config;

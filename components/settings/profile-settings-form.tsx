@@ -268,7 +268,7 @@ export function ProfileSettingsForm() {
               <Button
                 size="icon"
                 variant="secondary"
-                className="absolute  top-12 right-12 w-8 h-8  text-white  shadow-lg"
+                className="absolute  bg-black/70 hover:bg-black/80 backdrop-blur-sm top-12 right-12 w-8 h-8  text-white  shadow-lg"
                 onClick={() => document.getElementById("avatar-input")?.click()}
               >
                 <Image
@@ -318,7 +318,7 @@ export function ProfileSettingsForm() {
           <CardContent className="p-4 sm:p-6">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div className="flex items-start gap-3">
-                <Info className="h-5 w-5 text-purple-400 mt-1 flex-shrink-0" />
+                <Info className="h-5 w-5 text-white mt-1 flex-shrink-0" />
                 <div className="min-w-0 flex-1">
                   <h3 className="text-white font-semibold text-sm sm:text-base">
                     Verify your account
@@ -453,7 +453,6 @@ export function ProfileSettingsForm() {
                     <Input
                       placeholder={platform.placeholder}
                       className="bg-transparent w-full border-none outline-none focus:outline-none focus:ring-0 focus:border-transparent text-white placeholder:text-gray-400"
-                      value=""
                       onChange={(e) => {
                         const socialLinks = form.getValues("socialLinks");
                         form.setValue("socialLinks", {
@@ -466,7 +465,7 @@ export function ProfileSettingsForm() {
                   <Button
                     type="button"
                     variant="outline"
-                    className="bg-[#29292A] text-purple-400 border-purple-400/30 hover:bg-purple-600/30"
+                    className="bg-[#29292A]  hover:bg-transparent  text-white hover:text-white border-none"
                     onClick={() => handleSocialLink(platform.id)}
                   >
                     <Plus className="w-4 h-4 mr-2" />

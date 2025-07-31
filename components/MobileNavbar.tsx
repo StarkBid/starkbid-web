@@ -120,9 +120,15 @@ const MobileNavbar: React.FC = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="w-8 h-8 text-gray-300 hover:text-white transition-colors"
+              className="w-6 h-6 text-gray-300 hover:text-white transition-colors"
             >
-              <ShoppingBag size={20} />
+              <Image
+                src="/svgs/marketplace-menu.svg"
+                alt="shopping"
+                width={30}
+                height={30}
+                className="sm:w-6 sm:h-6"
+              />
             </Button>
 
             {/* User profile */}
@@ -130,13 +136,13 @@ const MobileNavbar: React.FC = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="w-8 h-8 rounded-full overflow-hidden bg-purple-600"
+                className="w-6 h-6 rounded-full overflow-hidden bg-purple-600"
               >
                 <Image 
                   src="/profile.png" 
                   alt="profile" 
-                  width={32} 
-                  height={32} 
+                  width={20} 
+                  height={20} 
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
@@ -161,9 +167,15 @@ const MobileNavbar: React.FC = () => {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="w-8 h-8 text-white hover:text-gray-300 transition-colors"
+                  className="w-10 h-10 text-white hover:text-gray-300 transition-colors"
                 >
-                  <Menu size={20} />
+                  <Image
+                    src="/svgs/hamburger-menu.svg"
+                    alt="menu"
+                    width={40}
+                    height={40}
+                    className="sm:w-6 sm:h-6"
+                  />
                 </Button>
               </SheetTrigger>
               <SheetContent 

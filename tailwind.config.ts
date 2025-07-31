@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
+import animate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
@@ -64,7 +66,6 @@ export default {
           "5": "hsl(var(--chart-5))",
         },
       },
-      fontSize: {},
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -72,5 +73,18 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    animate,
+    plugin(({ addUtilities }) => {
+      addUtilities({
+        ".scrollbar-hide": {
+          "scrollbar-width": "none",
+          "-ms-overflow-style": "none",
+        },
+        ".scrollbar-hide::-webkit-scrollbar": {
+          display: "none",
+        },
+      });
+    }),
+  ],
 } satisfies Config;

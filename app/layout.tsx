@@ -7,6 +7,7 @@ import AnnouncementBanner from "@/components/ui/AnnouncementBanner";
 import { SocketProvider } from "@/components/socket-provider";
 import ClientLayout from "@/components/ClientLayout";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -53,6 +54,7 @@ export default function RootLayout({
             </main>
           </div>
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );

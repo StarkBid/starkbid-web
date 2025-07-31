@@ -17,7 +17,9 @@ export default function WalletPage() {
             <div className="p-2 bg-purple/20 rounded-lg">
               <Wallet className="h-5 w-5 text-purple" />
             </div>
-            <CardTitle className="text-white text-xl">Wallet Management</CardTitle>
+            <CardTitle className="text-white text-xl">
+              Wallet Management
+            </CardTitle>
           </div>
         </CardHeader>
         <CardContent>

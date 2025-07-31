@@ -13,10 +13,9 @@ export default function BackButton({ className = "" }: BackButtonProps) {
   return (
     <button
       onClick={() => router.back()}
-      className={`flex items-center text-gray-400 hover:text-white transition-colors ${className}`}
+      className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-[#292929] border border-darkerGray rounded-md text-gray-400 hover:text-white hover:bg-[#3a3a3a] transition-all duration-200 ${className}`}
     >
-      <ArrowLeft className="w-4 h-4 mr-2 " />
-      Back
+      <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
     </button>
   );
 }

@@ -40,7 +40,7 @@ export function SettingsLayout({ children }: { children: React.ReactNode }) {
         {/* Main Content */}
         <main className="flex-1 flex flex-col">
           <div className="flex-1">
-            <div className="max-w-4xl mx-auto p-6">{children}</div>
+            <div className="max-w-full mx-auto">{children}</div>
           </div>
         </main>
       </div>

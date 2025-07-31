@@ -27,12 +27,12 @@ export default function CollectionTabs() {
   return (
     <div className="w-full max-w-[1420px] mx-auto bg-[#101213] backdrop-blur-sm px-4 sm:px-6">
       <div className="border-b border-white/10">
-        <div className="flex space-x-8">
+        <div className="flex space-x-0 lg:space-x-8">
           {tabs.map((tab) => (
             <Link
               key={tab.id}
               href={`/profile?tab=${tab.id}`}
-              className={`py-4 text-sm font-medium border-b-2 transition-colors ${
+              className={`flex-1 lg:flex-none text-center py-4 text-sm font-medium border-b-2 transition-colors whitespace-nowrap ${
                 activeTab === tab.id
                   ? "text-white border-white"
                   : "text-gray-400 border-transparent hover:text-gray-300"

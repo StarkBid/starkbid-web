@@ -9,11 +9,11 @@ import ActivityTab from "../activity";
 import ProfileCollectionsGrid from "./ProfileCollectionsGrid";
 
 const tabs = [
-  { id: "owned", label: "Owned Items", active: true },
-  { id: "created", label: "Created", active: false },
-  { id: "activity", label: "Activity", active: false },
-  { id: "collections", label: "Collections", active: false },
-  { id: "offers", label: "Offers/Bids", active: false },
+  { id: "owned", label: "Owned Items", mobileLabel: "Items", active: true },
+  { id: "created", label: "Created", mobileLabel: "Created", active: false },
+  { id: "activity", label: "Activity", mobileLabel: "Activity", active: false },
+  { id: "collections", label: "Collections", mobileLabel: "Collections", active: false },
+  { id: "offers", label: "Offers/Bids", mobileLabel: "Bids", active: false },
 ];
 
 /* interface CollectionTabsProps {
@@ -25,7 +25,7 @@ export default function CollectionTabs() {
   const activeTab = useSearchParams().get("tab") || "owned";
 
   return (
-    <div className="w-full max-w-[1420px] mx-auto bg-[#101213] backdrop-blur-sm px-6">
+    <div className="w-full max-w-[1420px] mx-auto bg-[#101213] backdrop-blur-sm px-4 sm:px-6">
       <div className="border-b border-white/10">
         <div className="flex space-x-8">
           {tabs.map((tab) => (
@@ -38,7 +38,8 @@ export default function CollectionTabs() {
                   : "text-gray-400 border-transparent hover:text-gray-300"
               }`}
             >
-              {tab.label}
+              <span className="lg:hidden">{tab.mobileLabel}</span>
+              <span className="hidden lg:inline">{tab.label}</span>
             </Link>
           ))}
         </div>

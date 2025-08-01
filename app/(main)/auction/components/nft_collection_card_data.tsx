@@ -56,7 +56,7 @@ const NFTCollectionSection = () => {
   ];
 
   return (
-    <div className="w-full px-4 sm:px-0 py-8 md:py-12">
+    <div className="w-full py-8 md:py-12">
       {/* Section Header */}
       <div className="mb-6 md:mb-8">
         <h2 className="text-white text-xl md:text-2xl font-bold mb-2">More from this collection</h2>
@@ -82,7 +82,7 @@ const NFTCollectionSection = () => {
       {/* If you want even larger cards, use this version */}
 
       <div className="w-full">
-        <div className="block md:block lg:grid lg:grid-cols-4 gap-6 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3  sm:gap-6 w-full">
           {nftCollectionData.map((nft) => (
             <NFTCollectionCard key={nft.id} data={nft} />
           ))}

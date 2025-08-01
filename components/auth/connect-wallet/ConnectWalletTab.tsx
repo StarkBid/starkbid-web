@@ -1,6 +1,5 @@
 "use client";
-
-import { FC } from "react";
+import type { FC } from "react";
 import { motion } from "framer-motion";
 
 interface ConnectWalletTabProps {
@@ -25,7 +24,6 @@ const ConnectWalletTab: FC<ConnectWalletTabProps> = ({ tabName }) => {
         {[1, 2].map((step) => {
           const isActive = tabName === `step-${step}`;
           const title = step === 1 ? "Connect Wallet" : "Profile Setup";
-
           return (
             <motion.div key={step} className="w-1/2" layout>
               <motion.div
@@ -34,7 +32,7 @@ const ConnectWalletTab: FC<ConnectWalletTabProps> = ({ tabName }) => {
                 animate={isActive ? "active" : "inactive"}
               />
               <motion.p
-                className="text-sm text-ash text-left font-semibold mt-3"
+                className="text-sm text-ash text-left font-semibold mt-3 hidden md:block"
                 variants={textVariants}
                 initial="initial"
                 animate="animate"
@@ -42,7 +40,7 @@ const ConnectWalletTab: FC<ConnectWalletTabProps> = ({ tabName }) => {
                 Step {step}
               </motion.p>
               <motion.p
-                className={`text-base mt-2 font-semibold text-left ${
+                className={`text-base mt-2 font-semibold text-left hidden md:block ${
                   isActive ? "text-white" : "text-ash"
                 }`}
                 variants={textVariants}

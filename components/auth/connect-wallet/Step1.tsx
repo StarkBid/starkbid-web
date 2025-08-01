@@ -1,13 +1,15 @@
 "use client";
-
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FC, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useWallet } from "@/providers/wallet-connect-context";
-import { StarknetkitConnector, useStarknetkitConnectModal } from "starknetkit";
+import {
+  type StarknetkitConnector,
+  useStarknetkitConnectModal,
+} from "starknetkit";
 import { useAccount, useConnect } from "@starknet-react/core";
 import { toast } from "sonner";
 
@@ -27,7 +29,7 @@ type Step1FormValues = z.infer<typeof Step1Schema>;
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5} },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
 const containerVariants = {
@@ -46,7 +48,6 @@ const Step1: FC<Step1Props> = ({ setTabName }) => {
   const { starknetkitConnectModal } = useStarknetkitConnectModal({
     connectors: connectors as unknown as StarknetkitConnector[],
   });
-
   const [selectedWallet, setSelectedWallet] = useState<string | null>(null);
 
   const handleConnect = async () => {
@@ -102,7 +103,7 @@ const Step1: FC<Step1Props> = ({ setTabName }) => {
   });
 
   const onSubmit = async (data: Step1FormValues) => {
-    console.log("step 1 data", data)
+    console.log("step 1 data", data);
     const selected = WalletOptions.find((w) => w.title === selectedWallet);
     if (selected) {
       await selected.action();
@@ -115,7 +116,7 @@ const Step1: FC<Step1Props> = ({ setTabName }) => {
     if (isSuccess && address && account) {
       setTabName("step-2");
     }
-  }, [isSuccess, address, account,setTabName]);
+  }, [isSuccess, address, account, setTabName]);
 
   return (
     <motion.form
@@ -139,7 +140,6 @@ const Step1: FC<Step1Props> = ({ setTabName }) => {
           <span className="text-purple cursor-pointer">Terms of Service</span>{" "}
           and <span className="text-purple cursor-pointer">Privacy Policy</span>
         </p>
-
         <div className="w-full mt-3 flex items-center justify-start gap-2">
           <input type="checkbox" {...register("acceptedTerms")} />
           <p className="text-left text-ash text-sm font-normal md:text-center">
@@ -154,22 +154,23 @@ const Step1: FC<Step1Props> = ({ setTabName }) => {
       </motion.div>
 
       <motion.div
-        className="w-full flex items-center justify-between my-6 gap-2"
+        className="w-full grid grid-cols-2 md:flex md:items-center md:justify-between my-6 gap-4 md:gap-2"
         variants={fadeInUp}
       >
         {WalletOptions.map(({ icon, title }) => (
           <motion.div
-            className={`w-1/4 flex flex-col justify-stretch items-center `}
+            className="flex flex-col justify-stretch items-center md:w-1/4"
             key={title}
             variants={fadeInUp}
             onClick={() => setSelectedWallet(title)}
           >
             <div
-              className={`"w-full border-2 border-deepGray rounded-md p-4 h-14 md:h-20  cursor-pointer flex items-center justify-center ${selectedWallet === title ? "border-purple" : "border-none"
-                } `}
+              className={`w-full border-2 border-deepGray rounded-md p-4 h-14 md:h-20 cursor-pointer flex items-center justify-center ${
+                selectedWallet === title ? "border-purple" : "border-none"
+              }`}
             >
               <Image
-                src={icon}
+                src={icon || "/placeholder.svg"}
                 width={60}
                 height={36.77}
                 alt="icon"
@@ -186,19 +187,18 @@ const Step1: FC<Step1Props> = ({ setTabName }) => {
       <motion.div className="w-full" variants={fadeInUp}>
         <button
           type="submit"
-          className={`w-full text-white p-3 rounded-md ${selectedWallet
+          className={`w-full text-white p-3 rounded-md ${
+            selectedWallet
               ? "bg-purple cursor-pointer"
               : "bg-gray-400 cursor-not-allowed"
-            }`}
+          }`}
           disabled={!selectedWallet}
         >
           Connect Wallet
         </button>
         <p className="text-center text-ash text-sm font-normal mt-5 pb-20">
-          Can’t find your wallet?{" "}
-          <span className="text-purple cursor-pointer">
-            Can’t find your wallet?
-          </span>
+          Can&apos;t find your wallet?{" "}
+          <span className="text-purple cursor-pointer">Contact Support </span>
         </p>
       </motion.div>
     </motion.form>

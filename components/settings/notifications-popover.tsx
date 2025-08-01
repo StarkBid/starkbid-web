@@ -74,13 +74,14 @@ export function NotificationsPopover() {
           <Image
             src="/svgs/notification.svg"
             alt="notification"
-            width={24}
-            height={24}
+            width={20}
+            height={20}
             quality={90}
+            className="md:w-6 md:h-6"
           />
           {unreadCount > 0 && (
-            <div className="min-w-[18px] h-[18px] rounded-full bg-red absolute -top-2 -right-2 flex items-center justify-center px-1">
-              <span className="text-white text-xs font-bold leading-none">
+            <div className="min-w-[16px] md:min-w-[18px] h-[16px] md:h-[18px] rounded-full bg-red absolute -top-1 md:-top-2 -right-1 md:-right-2 flex items-center justify-center px-1">
+              <span className="text-white text-[10px] md:text-xs font-bold leading-none">
                 {unreadCount > 99 ? "99+" : unreadCount}
               </span>
             </div>

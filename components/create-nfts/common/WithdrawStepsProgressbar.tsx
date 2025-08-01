@@ -34,7 +34,40 @@ const ProgressBar = () => {
       transition={{ duration: 0.4, ease: "easeOut" }}
       className="w-full overflow-x-auto remove-scrollbar lg:container lg:px-20"
     >
-      <div className="flex min-w-[640px] sm:min-w-full items-center mt-10 justify-between px-4 lg:px-0">
+    
+      <div className="lg:hidden flex items-center justify-center mt-10 px-4">
+        <div className="flex items-center space-x-2 w-full max-w-sm">
+          {steps.map(({ step }, index) => {
+            const activeIndex = steps.findIndex((step) => pathname.endsWith(step.path));
+            const isActive = index === activeIndex;
+            const isCompleted = index < activeIndex;
+
+            return (
+              <motion.div
+                key={step}
+                ref={(el) => {
+                  stepRefs.current[index] = el;
+                }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1, duration: 0.3 }}
+                className="flex-1"
+              >
+                <motion.div
+                  className="h-1 rounded-full"
+                  animate={{
+                    backgroundColor: isActive || isCompleted ? "#A855F7" : "#374151",
+                  }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+
+     
+      <div className="hidden lg:flex min-w-[640px] sm:min-w-full items-center mt-10 justify-between px-4 lg:px-0">
         {steps.map(({ title, step }, index) => {
           const activeIndex = steps.findIndex((step) => pathname.endsWith(step.path));
           const isActive = index === activeIndex;
@@ -76,7 +109,6 @@ const ProgressBar = () => {
             </motion.div>
           );
         })}
-
       </div>
     </motion.div>
   );

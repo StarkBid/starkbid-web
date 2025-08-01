@@ -25,17 +25,6 @@ export default function ProfileHeader() {
 
   return (
     <div className="bg-gradient-to-b from-purple via-[#101213] to-[#101213] relative">
-      {/* Edit Profile Button*/}
-      <div className="absolute top-6 right-4 sm:right-8 z-10">
-        <Button
-          variant="outline"
-          className="bg-[#1C1D1F]/70 border-[#2D2E32]/50 text-white hover:bg-[#2D2E32]/80 hover:text-white gap-2 px-4 py-2 backdrop-blur-sm"
-        >
-          <span className="inline">Edit Profile</span>
-          <Edit className="w-4 h-4" />
-        </Button>
-      </div>
-
       <Card className="max-w-[1440px] mx-auto py-6 border-none rounded-none bg-transparent">
         <CardContent className="p-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -47,7 +36,7 @@ export default function ProfileHeader() {
                     src="/avatars/avatar-2.svg"
                     width={150}
                     height={150}
-                    className="w-28 h-auto"
+                    className="h-auto"
                     alt="StarkBid logo"
                   />
                 </Avatar>
@@ -81,7 +70,18 @@ export default function ProfileHeader() {
                       Verify your account
                     </span>
                   </div>
-                  
+
+                  {/* Edit Profile Button - now inline and responsive */}
+                  <div className="flex justify-center sm:justify-start pt-2">
+                    <Button
+                      variant="outline"
+                      className="bg-[#1C1D1F]/70 border-[#2D2E32]/50 text-white hover:bg-[#2D2E32]/80 hover:text-white gap-2 px-4 py-2 backdrop-blur-sm"
+                    >
+                      <span className="hidden sm:inline">Edit Profile</span>
+                      <Edit className="w-4 h-4" />
+                    </Button>
+                  </div>
+
                   {/* Bio Section for mobile*/}
                   <div className="pt-2 block lg:hidden">
                     <p className="text-sm leading-relaxed text-gray-400 tracking-wide">

@@ -4,7 +4,7 @@ import { BsDiscord } from 'react-icons/bs'
 
 const AnnouncementBanner = () => {
   return (
-    <section className="bg-purple text-white p-4 flex items-center justify-between">
+    <section className="bg-purple text-white p-4 hidden lg:flex items-center justify-between">
         <div id="questCalendar" className="inline-flex gap-4">
             <Image
                 src={"/calendar.png"}

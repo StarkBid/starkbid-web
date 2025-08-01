@@ -73,15 +73,15 @@ export default function CreateCollectionModal({
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.2 }}
-        className="bg-[#1C1D1F] border-[#292929] border-[2px] p-6 rounded-lg shadow-lg z-10 w-full max-w-md max-h-[80vh] overflow-y-auto relative"
+        className="bg-[#1C1D1F] border-[#292929] border-[2px] p-4 sm:p-6 rounded-lg shadow-lg z-10 w-full max-w-md max-h-[90vh] sm:max-h-[80vh] overflow-y-auto relative"
       >
         <button
-          className="absolute top-4 right-4 text-[#67707dc2] hover:text-white bg-[#8E9BAE] bg-opacity-20 p-1 rounded-full"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[#67707dc2] hover:text-white bg-[#8E9BAE] bg-opacity-20 p-1 rounded-full"
           onClick={onClose}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-5 w-5 sm:h-6 sm:w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -94,10 +94,10 @@ export default function CreateCollectionModal({
             />
           </svg>
         </button>
-        <h2 className="text-xl font-bold mb-4 sm:text-2xl">
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6 pr-8">
           Create Collection (ERC-721)
         </h2>
-        <div className="mb-4">
+        <div className="mb-4 sm:mb-6">
           <MediaUpload
             mediaFile={mediaFile}
             mediaPreview={typeof mediaPreview === "string" ? mediaPreview : null}
@@ -106,67 +106,67 @@ export default function CreateCollectionModal({
             onRemove={removeMedia}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 sm:mb-6">
           <label
             htmlFor="collectionName"
-            className="block mb-1 text-sm sm:text-base"
+            className="block mb-2 text-sm sm:text-base font-medium"
           >
             Collection Name *
           </label>
           <input
             type="text"
             id="collectionName"
-            className="w-full bg-transparent text-white border border-[#292929] rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-purple"
+            className="w-full bg-transparent text-white border border-[#292929] rounded-md py-2 sm:py-3 px-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-purple placeholder-gray-400"
             placeholder="Enter collection name"
             value={collectionName}
             onChange={(e) => setCollectionName(e.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 sm:mb-6">
           <label
             htmlFor="collectionNumber"
-            className="block mb-1 text-sm sm:text-base"
+            className="block mb-2 text-sm sm:text-base font-medium"
           >
             Collection Number *
           </label>
           <input
             type="text"
             id="collectionNumber"
-            className="w-full bg-transparent text-white border border-[#292929] rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-purple"
+            className="w-full bg-transparent text-white border border-[#292929] rounded-md py-2 sm:py-3 px-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-purple placeholder-gray-400"
             placeholder="# enter number"
             value={collectionNumber}
             onChange={(e) => setCollectionNumber(e.target.value)}
           />
         </div>
-        <div className="mb-4">
+        <div className="mb-4 sm:mb-6">
           <label
             htmlFor="collectionDescription"
-            className="block mb-1 text-sm sm:text-base"
+            className="block mb-2 text-sm sm:text-base font-medium"
           >
             Description
           </label>
           <textarea
             id="collectionDescription"
             rows={3}
-            className="w-full bg-transparent text-white border border-[#292929] rounded-md py-2 px-3 focus:outline-none focus:ring-2 focus:ring-purple"
+            className="w-full bg-transparent text-white border border-[#292929] rounded-md py-2 sm:py-3 px-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-purple placeholder-gray-400 resize-none"
             placeholder="Tell us more about your collection"
             value={collectionDescription}
             onChange={(e) => setCollectionDescription(e.target.value)}
           ></textarea>
         </div>
-        <div className="mb-6">
+        <div className="mb-6 sm:mb-8">
           <label
             htmlFor="collectionURL"
-            className="block mb-1 text-sm sm:text-base"
+            className="block mb-2 text-sm sm:text-base font-medium"
           >
             Collection URL *
           </label>
           <div className="flex items-center bg-transparent text-white border border-[#292929] rounded-md">
-            <span className="px-3 text-sm sm:text-base">starkbid.com/</span>
+            <span className="px-3 text-xs sm:text-sm text-gray-400">starkbid.com/</span>
             <input
               type="text"
               id="collectionURL"
-              className="flex-1 bg-transparent py-2 px-3 focus:outline-none text-sm sm:text-base"
+              className="flex-1 bg-transparent py-2 sm:py-3 px-3 focus:outline-none text-sm sm:text-base placeholder-gray-400"
               placeholder="url link"
               value={collectionURL}
               onChange={(e) => setCollectionURL(e.target.value)}
@@ -177,7 +177,7 @@ export default function CreateCollectionModal({
           type="button"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full bg-purple text-white font-semibold py-2 px-4 rounded-md text-sm sm:text-base"
+          className="w-full bg-purple text-white font-semibold py-3 sm:py-4 px-4 rounded-md text-sm sm:text-base"
           onClick={handleCreateCollection}
         >
           Create Collection

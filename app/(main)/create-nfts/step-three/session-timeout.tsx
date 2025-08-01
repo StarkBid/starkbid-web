@@ -21,15 +21,15 @@ export default function SessionTimeoutModal({ isOpen, onRetry, onClose }: Sessio
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.2 }}
-        className="bg-[#1A1A1A] border-[2px] border-[#292929] p-6 rounded-lg shadow-lg z-10 w-full max-w-md max-h-[80vh] overflow-y-auto text-center relative"
+        className="bg-[#1A1A1A] border-[2px] border-[#292929] p-4 sm:p-6 rounded-lg shadow-lg z-10 w-full max-w-md max-h-[90vh] sm:max-h-[80vh] overflow-y-auto text-center relative"
       >
         <button
-          className="absolute top-4 right-4 text-[#67707dc2] hover:text-white bg-[#8E9BAE] bg-opacity-20 p-1 rounded-full"
+          className="absolute top-3 right-3 sm:top-4 sm:right-4 text-[#67707dc2] hover:text-white bg-[#8E9BAE] bg-opacity-20 p-1 rounded-full"
           onClick={onClose}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-5 w-5 sm:h-6 sm:w-6"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -42,17 +42,17 @@ export default function SessionTimeoutModal({ isOpen, onRetry, onClose }: Sessio
             />
           </svg>
         </button>
-        <h2 className="text-xl font-bold mb-4 sm:text-2xl text-white">
+        <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-3 sm:mb-4 text-white pr-8">
           Session Timeout
         </h2>
-        <p className="text-[#A3A3A3] mb-8">
+        <p className="text-sm sm:text-base text-[#A3A3A3] mb-6 sm:mb-8">
           Your session timed out. Please start the transaction process again.
         </p>
         <motion.button
           type="button"
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="w-full bg-purple text-white font-semibold py-3 px-4 rounded-md text-sm sm:text-base"
+          className="w-full bg-purple text-white font-semibold py-3 sm:py-4 px-4 rounded-md text-sm sm:text-base"
           onClick={onRetry}
         >
           Retry Transaction

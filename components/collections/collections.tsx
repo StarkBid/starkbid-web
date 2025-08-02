@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { collectionsData } from "@/lib/collections-data";
 
 interface CollectionsPageProps {
@@ -53,12 +54,12 @@ export default function CollectionsPage({ activeTab, searchQuery, blockchain }: 
                                 <th className="py-3 sticky text-left bg-black z-30">
                                     COLLECTION
                                 </th>
-                                <th className="py-3 text-left whitespace-nowrap">COLLECTION ID</th>
+                                <th className="py-3 text-left whitespace-nowrap hidden md:table-cell">COLLECTION ID</th>
                                 <th className="py-3 text-left whitespace-nowrap">FLOOR PRICE</th>
-                                <th className="py-3 text-left whitespace-nowrap">VOLUME</th>
-                                <th className="py-3 text-left whitespace-nowrap">SALES</th>
-                                <th className="py-3 text-left whitespace-nowrap">TOP OFFER</th>
-                                <th className="py-3 text-right pr-4 whitespace-nowrap">HOLDERS</th>
+                                <th className="py-3 text-left whitespace-nowrap hidden md:table-cell">VOLUME</th>
+                                <th className="py-3 text-left whitespace-nowrap hidden md:table-cell">SALES</th>
+                                <th className="py-3 text-left whitespace-nowrap hidden md:table-cell">TOP OFFER</th>
+                                <th className="py-3 text-right pr-4 whitespace-nowrap hidden md:table-cell">HOLDERS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,18 +87,18 @@ export default function CollectionsPage({ activeTab, searchQuery, blockchain }: 
                                             <div className="text-lg font-semibold truncate">{collection.name}</div>
                                         </div>
                                     </td>
-                                    <td className="py-4 group-hover:bg-gray-900">{collection.floorId}</td>
+                                    <td className="py-4 group-hover:bg-gray-900 hidden md:table-cell">{collection.floorId}</td>
                                     <td className="py-4 group-hover:bg-gray-900">{collection.floorPrice}</td>
-                                    <td className="py-4 group-hover:bg-gray-900">{collection.volume}</td>
-                                    <td className={`py-4 group-hover:bg-gray-900 ${
+                                    <td className="py-4 group-hover:bg-gray-900 hidden md:table-cell">{collection.volume}</td>
+                                    <td className={`py-4 group-hover:bg-gray-900 hidden md:table-cell ${
                                         collection.change?.startsWith("+")
                                             ? "text-green"
                                             : collection.change?.startsWith("-")
                                                 ? "text-red"
                                                 : ""
                                     }`}>{collection.change}</td>
-                                    <td className="py-4 group-hover:bg-gray-900">{collection.topOffer}</td>
-                                    <td className="py-4 text-right pr-2 group-hover:bg-gray-900">
+                                    <td className="py-4 group-hover:bg-gray-900 hidden md:table-cell">{collection.topOffer}</td>
+                                    <td className="py-4 text-right pr-2 group-hover:bg-gray-900 hidden md:table-cell">
                                         <div className="flex flex-col items-end">
                                             <div>{collection.holders}</div>
                                             <div className="text-xs text-gray-500">{collection.holdersDetail}</div>
@@ -115,9 +116,10 @@ export default function CollectionsPage({ activeTab, searchQuery, blockchain }: 
                     <div className="my-8 flex justify-center">
                         <button
                             onClick={loadMore}
-                            className="text-white bg-[#1C1D1F] py-2 px-4 rounded-lg hover:bg-[#2a2b2e] transition-colors"
+                            className="text-white bg-[#1C1D1F] py-2 px-4 rounded-lg hover:bg-[#2a2b2e] transition-colors flex items-center"
                         >
-                            See more
+                            <span>See more</span>
+                            <ArrowRight size={16} className="ml-2 md:hidden" />
                         </button>
                     </div>
                 )}

@@ -43,7 +43,7 @@ export default function RootLayout({
         >
           <div className="flex flex-col overflow-x-hidden">
             <AnnouncementBanner />
-            <main className="flex-grow bg-black px-2 md:px-0">
+            <main className="flex-grow bg-black">
               <StarknetProvider>
                 <WalletProvider>
                   <SocketProvider>

@@ -9,12 +9,15 @@ const ProgressBar = () => {
   const pathname = usePathname();
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const steps = useMemo(() => [
-    { title: "Choose Blockchain", path: "/create-nfts/step-one", step: 1 },
-    { title: "Create", path: "/create-nfts/step-two", step: 2 },
-    { title: "Add To Collection", path: "/create-nfts/step-three", step: 3 },
-    { title: "Final Review", path: "/create-nfts/step-four", step: 4 },
-  ], []);
+  const steps = useMemo(
+    () => [
+      { title: "Choose Blockchain", path: "/create-nfts/step-one", step: 1 },
+      { title: "Create", path: "/create-nfts/step-two", step: 2 },
+      { title: "Add To Collection", path: "/create-nfts/step-three", step: 3 },
+      { title: "Final Review", path: "/create-nfts/step-four", step: 4 },
+    ],
+    []
+  );
 
   useEffect(() => {
     const index = steps.findIndex((step) => pathname.endsWith(step.path));
@@ -25,7 +28,7 @@ const ProgressBar = () => {
         block: "nearest",
       });
     }
-  }, [pathname,steps]);
+  }, [pathname, steps]);
 
   return (
     <motion.div
@@ -69,7 +72,9 @@ const ProgressBar = () => {
      
       <div className="hidden lg:flex min-w-[640px] sm:min-w-full items-center mt-10 justify-between px-4 lg:px-0">
         {steps.map(({ title, step }, index) => {
-          const activeIndex = steps.findIndex((step) => pathname.endsWith(step.path));
+          const activeIndex = steps.findIndex((step) =>
+            pathname.endsWith(step.path)
+          );
           const isActive = index === activeIndex;
           const isCompleted = index < activeIndex;
 
@@ -87,19 +92,20 @@ const ProgressBar = () => {
               <motion.div
                 className="w-full h-1 rounded-md"
                 animate={{
-                  backgroundColor: isActive || isCompleted ? "#A855F7" : "#1e293b",
+                  backgroundColor:
+                    isActive || isCompleted ? "#A855F7" : "#1e293b",
                   scale: isActive ? 1.01 : 1,
                 }}
                 transition={{ duration: 0.3 }}
               />
               <motion.p
-                className="text-xs lg:text-sm text-ash font-semibold mt-4"
+                className="hidden lg:block text-xs lg:text-sm text-ash font-semibold mt-4"
                 animate={{ opacity: isActive || isCompleted ? 1 : 0.6 }}
               >
                 Step {step}
               </motion.p>
               <motion.p
-                className={`text-sm lg:text-base mt-1 font-semibold`}
+                className="hidden lg:block text-sm lg:text-base mt-1 font-semibold"
                 animate={{
                   color: isActive || isCompleted ? "#ffffff" : "#94a3b8",
                 }}

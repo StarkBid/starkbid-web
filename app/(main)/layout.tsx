@@ -1,5 +1,6 @@
 import Footer from "@/components/landing-page/Footer";
 import Navbar from "@/components/landing-page/Navbar";
+import MobileNavbar from "@/components/MobileNavbar";
 import React from "react";
 import { Fustat } from "next/font/google";
 
@@ -14,8 +15,9 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`${futsat.className} flex flex-col `}>
+    <div className={`${futsat.className} flex flex-col min-h-screen overflow-x-hidden`}>
       <Navbar />
+      <MobileNavbar />
       <main className="flex-grow">{children}</main>
       <Footer />
     </div>

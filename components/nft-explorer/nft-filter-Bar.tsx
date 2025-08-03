@@ -1,4 +1,4 @@
-import { ChevronLeft, ListFilter, Search } from "lucide-react";
+import { ChevronLeft, ListFilter, Search, ArrowUpDown } from "lucide-react";
 import React from "react";
 import {
   Select,
@@ -28,8 +28,8 @@ const NftFilterBar = ({
 }: NftFilterBarProps) => {
   return (
     <div className="pb-6">
-      <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-        <div className="relative flex-1 max-w-md">
+      <div className="flex flex-row gap-3 lg:gap-4 items-center lg:justify-between">
+        <div className="relative flex-1 lg:flex-none lg:max-w-md">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           <input
             type="text"
@@ -39,9 +39,9 @@ const NftFilterBar = ({
             className="w-full bg-[#1C1D1F] border border-[#2D2E32] rounded-lg pl-8 pr-4 py-3 text-white placeholder-[#8E9BAE] focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
-        <div className="flex items-center gap-3 w-full max-w-[320px]">
+        <div className="flex items-center gap-3 flex-shrink-0">
           <div className="flex items-center h-11 px-4 rounded-lg bg-[#18181B] border border-[#23232A]">
-            <span className="text-[#8E9BAE] text-sm font-medium mr-2">
+            <span className="text-[#8E9BAE] text-sm font-medium mr-2 hidden lg:inline">
               Price:
             </span>
             <Select
@@ -49,8 +49,13 @@ const NftFilterBar = ({
               value={sortOption}
               onValueChange={setSortOption}
             >
-              <SelectTrigger className="w-28 bg-transparent border-none shadow-none px-0 h-11 text-white text-sm font-medium flex items-center focus:ring-0 focus:outline-none">
-                <SelectValue className="text-white" />
+              <SelectTrigger className="w-auto lg:w-28 bg-transparent border-none shadow-none px-0 h-11 text-white text-sm font-medium flex items-center focus:ring-0 focus:outline-none [&>svg]:hidden lg:[&>svg]:block">
+                <div className="hidden lg:block">
+                  <SelectValue className="text-white" />
+                </div>
+                <div className="lg:hidden">
+                  <ArrowUpDown className="w-4 h-4 text-[#8E9BAE] lg:hidden" />
+                </div>
               </SelectTrigger>
               <SelectContent className="bg-[#18181B] border-[#23232A] text-white">
                 <SelectItem value="price_low">Low to High</SelectItem>
@@ -73,7 +78,7 @@ const NftFilterBar = ({
             ) : (
               <ListFilter className="w-4 h-4" />
             )}
-            Filters
+            <span className="hidden lg:block">Filters</span>
           </Button>
         </div>
       </div>

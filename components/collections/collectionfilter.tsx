@@ -69,9 +69,7 @@ export default function CollectionFilters({ onFilterChange }: CollectionFiltersP
 
     return (
         <div className="bg-black text-white w-full pt-8">
-            {/* Mobile Layout */}
             <div className="block md:hidden">
-                {/* Top navigation with tabs and filter icon */}
                 <div className="px-4 py-2">
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-2">
@@ -87,7 +85,6 @@ export default function CollectionFilters({ onFilterChange }: CollectionFiltersP
                             ))}
                         </div>
                         
-                        {/* Filter icon */}
                         <button className="p-2">
                             <Image 
                                 src="/filter.png" 
@@ -162,7 +159,6 @@ export default function CollectionFilters({ onFilterChange }: CollectionFiltersP
                             )}
                         </div>
 
-                        {/* View all button */}
                         <button className="flex items-center justify-center py-2.5 px-4 bg-[#1C1D1F] rounded-md text-sm text-white flex-1">
                             <span>View all</span>
                             <ArrowRight size={16} className="ml-2" />
@@ -171,7 +167,6 @@ export default function CollectionFilters({ onFilterChange }: CollectionFiltersP
                 </div>
             </div>
 
-            {/* Desktop Layout - Original Code */}
             <div className="hidden md:block">
                 {/* Top navigation */}
                 <div className="px-4 py-2">

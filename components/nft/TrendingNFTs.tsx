@@ -64,7 +64,6 @@ const TrendingNFTs = () => {
   return (
     <div className="bg-black text-white p-6 max-w-[1419px] mx-auto">
       <div className="flex flex-col mb-6">
-        {/* Tabs - Left aligned on mobile */}
         <div className="flex gap-3 sm:gap-4 mb-4 md:mb-6">
           <button
             className={`px-4 py-2 text-base sm:text-lg font-medium rounded-lg ${
@@ -90,7 +89,6 @@ const TrendingNFTs = () => {
 
         {/* Search and Controls Row */}
         <div className="flex gap-3 items-center">
-          {/* Search Bar - Shorter on mobile */}
           <div className="flex-1 md:flex-none md:w-[60%] relative">
             <svg 
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4"
@@ -109,11 +107,8 @@ const TrendingNFTs = () => {
             />
           </div>
 
-          {/* Mobile Icon Buttons / Desktop Dropdowns */}
           <div className="flex gap-3">
-            {/* Sort Control */}
             <div className="relative">
-              {/* Mobile: Icon Button */}
               <button
                 onClick={() => {
                   setShowSortDropdown(!showSortDropdown);
@@ -129,7 +124,6 @@ const TrendingNFTs = () => {
                 />
               </button>
               
-              {/* Desktop: Regular Dropdown */}
               <select
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value)}
@@ -140,7 +134,6 @@ const TrendingNFTs = () => {
                 <option value="Oldest">Oldest</option>
               </select>
 
-              {/* Mobile Dropdown Menu */}
               {showSortDropdown && (
                 <div className="md:hidden absolute top-12 right-0 bg-[#1C1D1F] border border-[#292929] rounded-md py-2 z-10 min-w-32">
                   <button
@@ -182,7 +175,6 @@ const TrendingNFTs = () => {
 
             {/* Filter Control */}
             <div className="relative">
-              {/* Mobile: Icon Button */}
               <button
                 onClick={() => {
                   setShowFilterDropdown(!showFilterDropdown);
@@ -198,7 +190,6 @@ const TrendingNFTs = () => {
                 />
               </button>
               
-              {/* Desktop: Regular Dropdown */}
               <select
                 value={filterOption}
                 onChange={(e) => setFilterOption(e.target.value)}
@@ -209,7 +200,6 @@ const TrendingNFTs = () => {
                 <option value="HighPrice">High Price</option>
               </select>
 
-              {/* Mobile Dropdown Menu */}
               {showFilterDropdown && (
                 <div className="md:hidden absolute top-12 right-0 bg-[#1C1D1F] border border-[#292929] rounded-md py-2 z-10 min-w-32">
                   <button
@@ -252,7 +242,6 @@ const TrendingNFTs = () => {
         </div>
       </div>
 
-      {/* Click outside to close dropdowns */}
       {(showSortDropdown || showFilterDropdown) && (
         <div 
           className="fixed inset-0 z-0" 

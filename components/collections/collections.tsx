@@ -54,7 +54,7 @@ export default function CollectionsPage({ activeTab, searchQuery, blockchain }: 
                                 <th className="py-2 md:py-3 sticky text-left bg-black z-30 min-w-[200px] md:min-w-[250px] text-xs md:text-sm">
                                     COLLECTION
                                 </th>
-                                <th className="py-2 md:py-3 text-left whitespace-nowrap min-w-[100px] text-xs md:text-sm">COLLECTION ID</th>
+
                                 <th className="py-2 md:py-3 text-left whitespace-nowrap min-w-[90px] text-xs md:text-sm">FLOOR PRICE</th>
                                 <th className="py-2 md:py-3 text-left whitespace-nowrap min-w-[80px] text-xs md:text-sm">VOLUME</th>
                                 <th className="py-2 md:py-3 text-left whitespace-nowrap min-w-[70px] text-xs md:text-sm">SALES</th>
@@ -87,7 +87,7 @@ export default function CollectionsPage({ activeTab, searchQuery, blockchain }: 
                                             <div className="text-sm md:text-lg font-semibold truncate min-w-0">{collection.name}</div>
                                         </div>
                                     </td>
-                                    <td className="py-3 md:py-4 group-hover:bg-gray-900 text-xs md:text-sm px-2">{collection.floorId}</td>
+
                                     <td className="py-3 md:py-4 group-hover:bg-gray-900 text-xs md:text-sm px-2">{collection.floorPrice}</td>
                                     <td className="py-3 md:py-4 group-hover:bg-gray-900 text-xs md:text-sm px-2">{collection.volume}</td>
                                     <td className={`py-3 md:py-4 group-hover:bg-gray-900 text-xs md:text-sm px-2 ${

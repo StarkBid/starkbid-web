@@ -68,7 +68,18 @@ export default function CollectionFilters({ onFilterChange }: CollectionFiltersP
     };
 
     return (
-        <div className="bg-black text-white w-full pt-8">
+        <div className="bg-black text-white w-full pt-8 relative">
+            {/* Click outside to close dropdowns */}
+            {(showTrendingDropdown || showBlockchainDropdown) && (
+                <div 
+                    className="fixed inset-0 z-40" 
+                    onClick={() => {
+                        setShowTrendingDropdown(false);
+                        setShowBlockchainDropdown(false);
+                    }}
+                />
+            )}
+
             <div className="block md:hidden">
                 <div className="px-4 py-2">
                     <div className="flex items-center justify-between">
@@ -138,18 +149,25 @@ export default function CollectionFilters({ onFilterChange }: CollectionFiltersP
                     <div className="flex items-center gap-3 w-full">
                         <div className="relative flex-1">
                             <button
-                                className="flex items-center justify-center py-2.5 px-4 bg-[#1C1D1F] rounded-md text-sm w-full"
-                                onClick={() => setShowBlockchainDropdown(!showBlockchainDropdown)}
+                                className="flex items-center justify-between py-2.5 px-4 bg-[#1C1D1F] rounded-md text-sm w-full"
+                                onClick={() => {
+                                    setShowBlockchainDropdown(!showBlockchainDropdown);
+                                    setShowTrendingDropdown(false);
+                                }}
                             >
                                 <span className="text-white">{blockchain}</span>
                                 <ChevronDown size={16} className="ml-2 text-gray-400" />
                             </button>
                             {showBlockchainDropdown && (
-                                <div className="absolute left-0 mt-2 w-48 bg-[#1C1D1F] rounded-md shadow-lg z-10">
-                                    {blockchainOptions.map((option) => (
+                                <div className="absolute left-0 top-full mt-2 w-full bg-[#1C1D1F] rounded-md shadow-xl z-[100] border border-gray-600">
+                                    {blockchainOptions.map((option, index) => (
                                         <button
                                             key={option.value}
-                                            className="block px-4 py-2 text-sm text-white hover:bg-gray-800 w-full text-left"
+                                            className={`block px-4 py-3 text-sm text-white hover:bg-[#292929] w-full text-left transition-colors ${
+                                                index === 0 ? 'rounded-t-md' : ''
+                                            } ${
+                                                index === blockchainOptions.length - 1 ? 'rounded-b-md' : ''
+                                            }`}
                                             onClick={() => handleBlockchainSelect(option.label)}
                                         >
                                             {option.label}
@@ -213,17 +231,24 @@ export default function CollectionFilters({ onFilterChange }: CollectionFiltersP
                             <div className="relative">
                                 <button
                                     className="flex items-center justify-between py-3 px-8 bg-[#1C1D1F] rounded-md text-xs"
-                                    onClick={() => setShowTrendingDropdown(!showTrendingDropdown)}
+                                    onClick={() => {
+                                        setShowTrendingDropdown(!showTrendingDropdown);
+                                        setShowBlockchainDropdown(false);
+                                    }}
                                 >
                                     <span>{selectedTrending}</span>
                                     <ChevronDown size={14} className="ml-2" />
                                 </button>
                                 {showTrendingDropdown && (
-                                    <div className="absolute right-0 mt-2 w-48 bg-[#1C1D1F] rounded-md shadow-lg z-10">
-                                        {trendingOptions.map((option) => (
+                                    <div className="absolute right-0 top-full mt-2 w-48 bg-[#1C1D1F] rounded-md shadow-xl z-50 border border-gray-600">
+                                        {trendingOptions.map((option, index) => (
                                             <button
                                                 key={option.value}
-                                                className="block px-4 py-2 text-sm text-white hover:bg-gray-800 w-full text-left"
+                                                className={`block px-4 py-3 text-sm text-white hover:bg-[#292929] w-full text-left transition-colors ${
+                                                    index === 0 ? 'rounded-t-md' : ''
+                                                } ${
+                                                    index === trendingOptions.length - 1 ? 'rounded-b-md' : ''
+                                                }`}
                                                 onClick={() => handleTrendingSelect(option)}
                                             >
                                                 {option.label}
@@ -262,17 +287,24 @@ export default function CollectionFilters({ onFilterChange }: CollectionFiltersP
                                 <div className="relative">
                                     <button
                                         className="flex items-center justify-between py-3 px-8 bg-[#1C1D1F] rounded-md text-xs"
-                                        onClick={() => setShowBlockchainDropdown(!showBlockchainDropdown)}
+                                        onClick={() => {
+                                            setShowBlockchainDropdown(!showBlockchainDropdown);
+                                            setShowTrendingDropdown(false);
+                                        }}
                                     >
                                         <span>{blockchain}</span>
                                         <ChevronDown size={14} className="ml-2" />
                                     </button>
                                     {showBlockchainDropdown && (
-                                        <div className="absolute right-0 mt-2 w-48 bg-[#1C1D1F] rounded-md shadow-lg z-10">
-                                            {blockchainOptions.map((option) => (
+                                        <div className="absolute right-0 top-full mt-2 w-48 bg-[#1C1D1F] rounded-md shadow-xl z-50 border border-gray-600">
+                                            {blockchainOptions.map((option, index) => (
                                                 <button
                                                     key={option.value}
-                                                    className="block px-4 py-2 text-sm text-white hover:bg-gray-800 w-full text-left"
+                                                    className={`block px-4 py-3 text-sm text-white hover:bg-[#292929] w-full text-left transition-colors ${
+                                                        index === 0 ? 'rounded-t-md' : ''
+                                                    } ${
+                                                        index === blockchainOptions.length - 1 ? 'rounded-b-md' : ''
+                                                    }`}
                                                     onClick={() => handleBlockchainSelect(option.label)}
                                                 >
                                                     {option.label}

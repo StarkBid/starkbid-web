@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect, useCallback } from "react";
+import clsx from "clsx";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { nftItems } from "@/constants/data";
 import { BsHeart, BsHeartFill } from "react-icons/bs";
@@ -68,22 +69,23 @@ const Hero = () => {
   // //   }
   // // };
 
-  const goToSlide = useCallback((index: React.SetStateAction<number>) => {
-    if (isTransitioning) return;
+  const goToSlide = useCallback(
+    (index: React.SetStateAction<number>) => {
+      if (isTransitioning) return;
 
-    setIsTransitioning(true);
-    setActiveIndex(index);
+      setIsTransitioning(true);
+      setActiveIndex(index);
 
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 500);
-  }, [isTransitioning]
-  )
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 500);
+    },
+    [isTransitioning]
+  );
   const nextSlide = useCallback(() => {
     const newIndex = (activeIndex + 1) % nftItems.length;
     goToSlide(newIndex);
-  }, [activeIndex, goToSlide]
-  )
+  }, [activeIndex, goToSlide]);
   const prevSlide = () => {
     const newIndex = (activeIndex - 1 + nftItems.length) % nftItems.length;
     goToSlide(newIndex);
@@ -106,19 +108,19 @@ const Hero = () => {
 
   return (
     <div
-      className="mt-4 pb-6 sm:mt-6 md:mt-[22px] relative overflow-hidden rounded-xl w-full max-w-[1320px] mx-auto"
+      className="pb-6 sm:mt-6 md:mt-[22px] relative overflow-hidden rounded-none sm:rounded-xl w-full max-w-[1320px] mx-auto"
       style={{ height: "clamp(400px, 50vw, 525px)" }}
     >
       <div
         className="relative w-full h-full"
         ref={carouselRef}
-      // onTouchStart={handleTouchStart}
-      // onTouchMove={handleTouchMove}
-      // onTouchEnd={handleTouchEnd}
-      // onMouseDown={handleMouseDown}
-      // onMouseMove={handleMouseMove}
-      // onMouseUp={handleMouseUp}
-      // onMouseLeave={handleMouseLeave}
+        // onTouchStart={handleTouchStart}
+        // onTouchMove={handleTouchMove}
+        // onTouchEnd={handleTouchEnd}
+        // onMouseDown={handleMouseDown}
+        // onMouseMove={handleMouseMove}
+        // onMouseUp={handleMouseUp}
+        // onMouseLeave={handleMouseLeave}
       >
         {/* Slides */}
         <div
@@ -128,7 +130,11 @@ const Hero = () => {
           {nftItems.map((nft, index) => (
             <div
               key={nft.id}
-              className="flex-shrink-0 w-full h-full relative"
+              className={clsx(
+                "flex-shrink-0 relative mobile-hero-bg",
+                "h-[719px] w-[375px]",
+                "sm:h-full w-full"
+              )}
               style={{
                 backgroundImage: `url(/svgs/hero-bg.svg)`,
                 backgroundSize: "cover",
@@ -137,16 +143,15 @@ const Hero = () => {
             >
               {/* Gradient overlay - positioned on top of the image */}
               <div
-                className="absolute top-0 right-0 bottom-0 w-full md:w-4/5 lg:w-3/4 z-10"
-                style={{
-                  background:
-                    "linear-gradient(270deg, rgba(16, 18, 19, 0.95) 45%, rgba(16, 18, 19, 0) 70%)",
-                  pointerEvents: "none", // Ensures clicks pass through to elements beneath
-                }}
+                className={clsx(
+                  "absolute top-0 right-0 bottom-0 w-full z-10 pointer-events-none",
+                  "bg-gradient-to-b from-[#101213]/0 to-[#101213] to-[63.59%]",
+                  "md:bg-gradient-to-l md:from-[#101213]/95 md:via-[#101213]/60 md:to-[#101213]/0"
+                )}
               ></div>
 
               {/* Content overlay */}
-              <div className="absolute top-0 right-0 bottom-0 w-full sm:w-3/4 md:w-1/2 lg:w-[40%] z-20 flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12">
+              <div className="absolute top-[307px] right-0 bottom-0 w-full sm:w-3/4 md:w-1/2 lg:w-[40%] z-20 flex flex-col justify-center px-4 sm:px-6 md:px-8 lg:px-12">
                 <h1 className="text-xl sm:text-2xl md:text-[24px] font-bold text-white mb-4 sm:mb-6">
                   {nft.title}
                 </h1>
@@ -222,7 +227,7 @@ const Hero = () => {
 
         {/* Navigation arrows */}
         <button
-          className="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-black/80 rounded-full flex items-center justify-center text-white z-30 hover:bg-black/70 transition-colors"
+          className="absolute left-1 sm:left-2 top-1/3 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-black/80 rounded-full flex items-center justify-center text-white z-30 hover:bg-black/70 transition-colors"
           onClick={prevSlide}
         >
           <ArrowLeft size={16} className="sm:hidden" />
@@ -242,10 +247,11 @@ const Hero = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-1 rounded-full transition-all duration-300 ${index === activeIndex
-                ? "w-20 sm:w-20 bg-white"
-                : "w-20 bg-gray-600"
-                }`}
+              className={`h-1 rounded-full transition-all duration-300 ${
+                index === activeIndex
+                  ? "w-20 sm:w-20 bg-white"
+                  : "w-20 bg-gray-600"
+              }`}
             />
           ))}
         </div>

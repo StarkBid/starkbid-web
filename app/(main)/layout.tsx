@@ -15,7 +15,7 @@ export default function HomeLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className={`${futsat.className} flex flex-col min-h-screen overflow-x-hidden`}>
+    <div className={`${futsat.className} flex flex-col min-h-screen`}>
       <Navbar />
       <MobileNavbar />
       <main className="flex-grow">{children}</main>

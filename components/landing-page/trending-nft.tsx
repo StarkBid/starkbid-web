@@ -23,38 +23,46 @@ const NFTCard: React.FC<NFTCardProps> = ({
 
   return (
     <div
-      className="flex flex-col rounded-lg overflow-hidden w-full border border-[#292929] transition-colors duration-300 hover:bg-[#292929]"
+      className="flex flex-col rounded-lg overflow-hidden h-full w-full border border-[#292929] transition-colors duration-300 hover:bg-[#292929]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="flex justify-between items-center p-3">
-        <Link href={"/profile"} className="group flex items-center gap-2">
-          <Image
-            src={`/${creatorIcon}`}
-            alt={creatorName}
-            width={28}
-            height={28}
-            className="rounded-full"
-          />
-          <span className="text-white font-medium group-hover:underline">
+      <div className="flex justify-between items-center py-[5.26px] px-[4.21px] sm:p-3">
+        <Link
+          href={"/profile"}
+          className="group flex items-center gap-[5.17px] sm:gap-2"
+        >
+          <div className="w-[15.77px] h-[15.77px] sm:w-[28px] sm:h-[28px]">
+            <Image
+              src={`/${creatorIcon}`}
+              alt={creatorName}
+              width={28}
+              height={28}
+              className="rounded-full w-full h-full object-cover"
+            />
+          </div>
+
+          <span className="text-white text-[10px] sm:text-[16px] font-semibold group-hover:underline">
             {creatorName}
           </span>
-          {isVerified && <MdVerified className="text-purple" size={16} />}
+          {isVerified && (
+            <MdVerified className="text-purple w-[10px] h-[10px] sm:w-[16px] sm:h-[16px]" />
+          )}
         </Link>
         <button
           onClick={() => setIsLiked(!isLiked)}
           className="text-ash hover:text-red-500 transition-colors"
         >
           {isLiked ? (
-            <BsHeartFill className="text-ash" size={20} />
+            <BsHeartFill className="text-ash w-[10px] h-[10px] sm:w-[20px] sm:h-[20px]" />
           ) : (
-            <BsHeart size={20} />
+            <BsHeart className="w-[10px] h-[10px] sm:w-[20px] sm:h-[20px]" />
           )}
         </button>
       </div>
 
       <div
-        className="relative w-full h-64 overflow-hidden"
+        className="relative w-full h-[150px] sm:h-64 overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
@@ -62,7 +70,7 @@ const NFTCard: React.FC<NFTCardProps> = ({
           src={`/${image}`}
           alt={title}
           fill
-          className={`px-4 transition-all duration-300 ease-in-out ${
+          className={`px-[4.21px] sm:px-4 transition-all duration-300 ease-in-out ${
             isHovered ? "scale-[1.03] " : ""
           }`}
         />
@@ -76,7 +84,7 @@ const NFTCard: React.FC<NFTCardProps> = ({
         )}
       </div>
 
-      <div className="p-4">
+      <div className="hidden sm:p-4 sm:block">
         <h3 className="text-white font-bold text-lg mb-1">{title}</h3>
 
         <div className="text-ash text-sm mb-3">Current Bid</div>
@@ -90,6 +98,19 @@ const NFTCard: React.FC<NFTCardProps> = ({
           <div>{timeLeft} left</div>
         </div>
       </div>
+
+      {/* Mobile content */}
+      <div className="px-[4.21px] py-[5.26px] flex flex-col gap-[10px] w-fill sm:hidden">
+        <div className="font-bold text-[12px] text-white">{title}</div>
+        <div className="flex justify-between items-center">
+          <div className="font-semibold text-[10px] text-[#8E9BAE]">
+            Current Bid
+          </div>
+          <div className="font-bold text-[12px] text-white">
+            {currentBid} ETH
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
@@ -98,7 +119,7 @@ const TrendingNFTs: React.FC = () => {
   const [activeTab, setActiveTab] = useState("trending");
 
   return (
-    <div className="bg-black text-white p-6 max-w-[1419] mx-auto ">
+    <div className="bg-black text-white p-6 max-w-[1419] mx-auto pt-64 sm:pt-0">
       <div className="flex gap-[1em] mb-4 sm:mb-8">
         <button
           className={`px-2 py-1 text-[16px] font-semibold sm:font-bold sm:text-xl ${
@@ -131,7 +152,7 @@ const TrendingNFTs: React.FC = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 gap-[11.56px] sm:grid-cols-2 lg:grid-cols-4 sm:gap-6">
         {nftData.map((nft) => (
           <NFTCard key={nft.id} {...nft} />
         ))}
@@ -139,7 +160,7 @@ const TrendingNFTs: React.FC = () => {
       <div className="flex justify-center mt-10">
         <Link
           href="/nfts"
-          className="bg-deepGray hover:bg-zinc-700 text-white font-medium py-3 px-6 rounded-lg flex items-center gap-2 transition-colors"
+          className="bg-deepGray hover:bg-zinc-700 text-white font-medium py-3 px-6 rounded-lg flex items-center gap-[10px] transition-colors"
         >
           View all NFTs
           <Image src={Arrow} alt="arrow icon" />

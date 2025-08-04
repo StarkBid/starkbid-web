@@ -50,32 +50,50 @@ export default function StepFourPage() {
   };
 
   return (
-    <div className="px-6 py-8 mx-auto">
-      <ProgressBar currentStep={4} totalSteps={0} />
-      <BackButton className='mt-6'/>
-      <h1 className="text-[40px] font-semibold mb-3 mt-6">Final Review</h1>
-      <p className="text-[#8E9BAE] mb-6">Please ensure every information is correct before proceeding</p>
+    <div className="min-h-screen bg-black text-white">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6 md:py-8 pb-6 sm:pb-8 md:pb-10">
+        <div className="mb-4 sm:mb-6">
+          <ProgressBar currentStep={4} totalSteps={0} />
+        </div>
+        
+        <div className="mb-4 sm:mb-6">
+          <BackButton className="text-sm sm:text-base" />
+        </div>
+        
+        <div className="mb-4 sm:mb-6 md:mb-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-semibold mb-2 sm:mb-3 text-white">
+            Final Review
+          </h1>
+          <p className="text-sm sm:text-base text-[#8E9BAE] leading-relaxed">
+            Please ensure every information is correct before proceeding
+          </p>
+        </div>
 
-      <ChooseBlockchainSection data={formData} onEdit={() => handleEdit('one')} />
-      <CreateNFTSection data={formData} onEdit={() => handleEdit('two')} />
-      <AddToCollectionSection data={formData} onEdit={() => handleEdit('three')} />
+        <div className="space-y-4 sm:space-y-6 md:space-y-8">
+          <ChooseBlockchainSection data={formData} onEdit={() => handleEdit('one')} />
+          <CreateNFTSection data={formData} onEdit={() => handleEdit('two')} />
+          <AddToCollectionSection data={formData} onEdit={() => handleEdit('three')} />
+        </div>
 
-      <motion.button
-        className="w-full mt-8 py-3 bg-[#8C62F2] text-white rounded-lg hover:bg-purple-700"
-        onClick={handleConfirm}
-      >
-        Next
-      </motion.button>
+        <motion.button
+          className="w-full mt-6 sm:mt-8 py-3 sm:py-4 bg-[#8C62F2] text-white rounded-lg hover:bg-purple-700 transition-colors text-sm sm:text-base font-medium min-h-[44px] sm:min-h-[48px]"
+          onClick={handleConfirm}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+        >
+          Next
+        </motion.button>
 
-      {showModal && (
-        <ConfirmationModal
-          title="Confirm Mint"
-          description="Are you sure you want to mint this NFT? Once submitted, metadata is immutable."
-          onCancel={() => setShowModal(false)}
-          onConfirm={submitData}
-        />
-      )}
-      {isSubmitting && <SubmittingLoader />}
+        {showModal && (
+          <ConfirmationModal
+            title="Confirm Mint"
+            description="Are you sure you want to mint this NFT? Once submitted, metadata is immutable."
+            onCancel={() => setShowModal(false)}
+            onConfirm={submitData}
+          />
+        )}
+        {isSubmitting && <SubmittingLoader />}
+      </div>
     </div>
   );
 }

@@ -70,7 +70,7 @@ const DescriptionPage = () => {
                 <h3 className="text-white text-lg font-semibold mb-4">About This Collection</h3>
                 <div className="flex items-center gap-3 mb-4">
                     <p className="text-gray-400 text-sm">Collection by</p>
-                    <Image src={'/creator_nft.png'} alt="creatornft" width={50} height={50} />
+                    <Image src={'/creator_nft.png'} alt="creatornft" width={50} height={50} className='w-8 h-8 sm:w-[50px] sm:h-[50px]' />
                     <p className="text-white font-medium">x0023y...yrte</p>
                 </div>
                 <p className="text-lg leading-loose tracking-wider text-gray-400">

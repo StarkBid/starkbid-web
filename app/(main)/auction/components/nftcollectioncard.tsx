@@ -67,7 +67,7 @@ const NFTCollectionCard: React.FC<NFTCollectionCardProps> = ({ data }) => {
             <p className="text-gray-400 text-xs mb-1.5">Current Bid</p>
             <p className="text-white font-semibold">{data.currentBid}</p>
           </div>
-          <div className=" sm:flex-col  text-left justify-between hidden sm:flex">
+          <div className=" sm:flex-col  text-right justify-between hidden sm:flex">
             <p className="text-gray-400 text-xs mb-1.5">{data.bidCount} bids</p>
             <p className="text-gray-400 text-xs">{data.timeLeft}</p>
           </div>

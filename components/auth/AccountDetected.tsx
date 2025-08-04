@@ -3,6 +3,12 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
+import { Nunito_Sans } from 'next/font/google';
+
+const nunitoSans = Nunito_Sans({
+  subsets: ['latin'],
+  weight: ['300', '400', '600', '700'],
+});
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -34,8 +40,28 @@ const AccountDetected = () => {
       animate="show"
       exit="hidden"
       variants={containerVariants}
-      className="w-full h-full flex flex-col items-center justify-start px-6 pt-20 md:w-4/5 md:mx-auto md:justify-center md:pt-20 pb-20"
+      className={`w-full h-full flex flex-col items-center justify-start px-6 pt-20 md:w-4/5 md:mx-auto md:justify-center md:pt-20 pb-20 ${nunitoSans.className}`}
     >
+      <motion.div
+        className="mb-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.5 }}
+      >
+        <div className="flex items-center gap-2 mb-5 sm:hidden">
+          <div className="w-8 h-8 bg-purple rounded-xl flex items-center justify-center">
+            <Image
+              src="/starkbid.png"
+              alt="StarkBid"
+              width={24}
+              height={24}
+              className="w-6 h-6"
+            />
+          </div>
+          <span className="text-white text-xl font-bold">StarkBid</span>
+        </div>
+      </motion.div>
+
       <motion.div className="w-full" variants={fadeInUp}>
         <h1 className="text-3xl font-bold text-center lg:text-4xl">
           Account Detected

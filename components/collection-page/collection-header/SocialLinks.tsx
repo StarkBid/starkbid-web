@@ -112,21 +112,19 @@ const SocialLinks: React.FC = () => {
       </div>
 
       {/* Info Cards - Responsive Stacking */}
-      <div className="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap items-start sm:items-center gap-3 sm:gap-4 lg:gap-6 text-sm text-gray-400 my-5">
+      <div className="flex  flex-wrap lg:flex-nowrap justify-center items-center gap-3 sm:gap-4 lg:gap-6 text-sm text-gray-400 my-5">
         {/* Creator Info */}
-        <div className="flex items-center space-x-2 bg-[#1C1D1F] rounded p-2 sm:p-3 w-full sm:w-auto">
-          <span className="text-xs sm:text-sm">By</span>
-          <span className="text-white font-medium text-xs sm:text-sm">
-            Cattie Negtar
-          </span>
+        <div className="flex items-center w-fit justify-center space-x-2 bg-[#1C1D1F] rounded-md py-2 px-3.5  sm:p-3  sm:w-auto">
+          <span className="text-sm">By</span>
+          <span className="text-white font-medium text-sm">Cattie Negtar</span>
           <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full flex items-center justify-center flex-shrink-0">
-             <Image src={"/Star2.png"} width={50} height={50} alt="" />
+            <Image src={"/Star2.png"} width={50} height={50} alt="" />
           </div>
         </div>
 
         {/* Blockchain Info */}
-        <div className="flex items-center space-x-2 bg-[#1C1D1F] rounded p-2 sm:p-3 w-full sm:w-auto">
-          <span className="text-xs sm:text-sm text-white">Ethereum</span>
+        <div className="flex items-center w-fit justify-center space-x-2 bg-[#1C1D1F] rounded-md py-2 px-3.5 sm:p-3  sm:w-auto">
+          <span className="text-sm text-white">Ethereum</span>
           <div className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0">
             <svg viewBox="0 0 24 24" className="w-full h-full text-white">
               <path
@@ -138,11 +136,9 @@ const SocialLinks: React.FC = () => {
         </div>
 
         {/* Date Created */}
-        <div className="bg-[#1C1D1F] rounded p-2 sm:p-3 w-full sm:w-auto">
-          <span className="text-xs sm:text-sm">Date created </span>
-          <span className="text-white ml-2 text-xs sm:text-sm">
-            May 15, 2025
-          </span>
+        <div className="bg-[#1C1D1F] w-fit rounded-md py-2 px-3.5 sm:p-3 sm:w-auto">
+          <span className="text-sm">Date created </span>
+          <span className="text-white ml-2 text-sm">May 15, 2025</span>
         </div>
       </div>
     </div>

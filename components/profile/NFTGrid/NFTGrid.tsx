@@ -74,7 +74,7 @@ const NFTGrid: React.FC<NFTGridProps> = ({
   return (
     <div className="space-y-6">
       <div 
-        className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 ${gridColsClass || 'lg:grid-cols-4'} gap-6`}
+        className={`grid grid-cols-2 md:grid-cols-3 ${gridColsClass || 'lg:grid-cols-4'} gap-3 sm:gap-6`}
         aria-busy={loading ? "true" : "false"}
       >
         <AnimatePresence initial={false}>

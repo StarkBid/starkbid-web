@@ -74,17 +74,17 @@ const NFTCard: React.FC<NFTCardProps> = ({ nft, onClick }) => {
                 )}
             </div>
 
-            <div className="">
+            <div className="pb-2">
                 <h3 className="text-white font-medium truncate mb-2 mt-1">{nft.name}</h3>
 
                 {/* Current Bid & Price */}
                 <div className="flex justify-between items-center mb-1">
-                    <p className="text-[#8E9BAE] text-sm font-medium">Current Bid</p>
-                    <p className="text-[#8E9BAE] text-sm font-medium">{nft.price.eth} ETH</p>
+                    <p className="text-[#8E9BAE] text-[10px] sm:text-sm font-medium">Current Bid</p>
+                    <p className="text-[#8E9BAE] text-xs sm:text-sm font-bold">{nft.price.eth} ETH</p>
                 </div>
 
                 {/* Likes & Time Left */}
-                <div className="flex justify-between items-center text-sm text-white">
+                <div className="hidden sm:flex justify-between items-center text-sm text-white">
                     <p>564 likes</p>
                     <p>24 minted | 1d 9h left</p>
                 </div>

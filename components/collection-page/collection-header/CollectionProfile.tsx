@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const CollectionProfile: React.FC = () => {
   return (
-    <div className="flex flex-col items-center space-x-4">
+    <div className="flex flex-col w-full items-start sm:items-center space-x-4">
       <div className="w-32 h-32  rounded-2xl  flex items-center justify-center">
         <Image src={"/collectionProfile.png"} width={100} height={100} alt='' className='w-full h-full'/>
       </div>

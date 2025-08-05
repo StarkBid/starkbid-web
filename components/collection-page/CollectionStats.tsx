@@ -52,11 +52,11 @@ const CollectionStats: React.FC = () => {
           ))}
         </div>
       </div>
-      <div className="grid sm:hidden grid-cols-2 gap-4">
+      <div className="grid sm:hidden grid-cols-3 gap-4">
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="flex flex-col items-center justify-center p-3 bg-[#1f2123] rounded-lg"
+            className="flex flex-col items-start justify-start p-3  rounded-lg"
           >
             <div className="text-xs text-gray-400 uppercase mb-2 tracking-wide text-center">
               {stat.label}

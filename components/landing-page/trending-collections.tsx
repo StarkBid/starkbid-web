@@ -45,7 +45,7 @@ const BlockchainDropdown: React.FC<{
   return (
     <div className="relative h-full">
       <button
-        className="flex items-center h-full bg-[#272729] px-4 py-2 rounded-lg"
+        className="flex items-center justify-center h-full w-full bg-[#272729] px-6 py-3 sm:px-4 sm:py-2 rounded-lg"
         onClick={() => setIsOpen(!isOpen)}
       >
         {blockchain}
@@ -106,7 +106,9 @@ const CollectionTableRow: React.FC<(typeof trendingCollections)[0]> = ({
           </div>
         </div>
         <Link
-          href={`/collections/${encodeURIComponent(name.replace(/\s+/g, "-").toLowerCase())}`}
+          href={`/collections/${encodeURIComponent(
+            name.replace(/\s+/g, "-").toLowerCase()
+          )}`}
           className="whitespace-nowrap group-hover:underline group-hover:cursor-pointer"
         >
           {name}
@@ -114,17 +116,23 @@ const CollectionTableRow: React.FC<(typeof trendingCollections)[0]> = ({
       </div>
     </td>
     <td className="px-4 py-4 whitespace-nowrap">{floorPrice}</td>
-    <td className="px-4 py-4 whitespace-nowrap">{volume}</td>
-    <td className="px-4 py-4 whitespace-nowrap">{topOffer}</td>
+    <td className="px-4 py-4 whitespace-nowrap hidden sm:table-cell">
+      {volume}
+    </td>
+    <td className="px-4 py-4 whitespace-nowrap hidden sm:table-cell">
+      {topOffer}
+    </td>
     <td
-      className={`px-4 py-4 whitespace-nowrap ${
+      className={`px-4 py-4 whitespace-nowrap hidden sm:table-cell ${
         change.startsWith("+") ? "text-green-500" : "text-red-500"
       }`}
     >
       {change}
     </td>
-    <td className="px-4 py-4 whitespace-nowrap">{sales}</td>
-    <td className="px-4 py-4 w-fit">
+    <td className="px-4 py-4 whitespace-nowrap hidden sm:table-cell">
+      {sales}
+    </td>
+    <td className="px-4 py-4 w-fit hidden sm:table-cell">
       <div className="flex flex-col w-fit">
         <span>{holder}%</span>
         <span className="text-[#A3A3A3] text-sm">{rate}</span>
@@ -158,7 +166,7 @@ const TrendingCollections: React.FC = () => {
         </div>
 
         {/* Header and Filters */}
-        <div className="flex flex-col md:flex-row justify-between mb-8 gap-4">
+        <div className="hidden sm:flex sm:flex-row justify-between items-center mb-8 gap-4">
           <h2 className="text-2xl font-bold">Trending Collections</h2>
           <div className="flex gap-3 items-center h-12 flex-wrap">
             <TimeframeSelector
@@ -173,8 +181,31 @@ const TrendingCollections: React.FC = () => {
           </div>
         </div>
 
+        {/*Mobile view */}
+
+        <div className="flex flex-col gap-[10px] sm:hidden">
+          <div>Trending Collections</div>
+          <div>
+            <TimeframeSelector
+              timeframe={timeframe}
+              onTimeframeChange={setTimeframe}
+            />
+          </div>
+          <div className="flex items-center gap-[15px]">
+            <div className="flex-1">
+              <BlockchainDropdown
+                blockchain={blockchain}
+                onBlockchainChange={setBlockchain}
+              />
+            </div>
+            <div className="flex-1">
+              <ViewAllButton />
+            </div>
+          </div>
+        </div>
+
         <div className="overflow-x-auto">
-          <table className="w-full text-sm min-w-[1200px] xl:min-w-0">
+          <table className="w-full hidden sm:table text-sm min-w-[1200px] xl:min-w-0">
             <thead className="border-b-[0.3px] border-zinc-500 text-white/60 text-left uppercase">
               <tr>
                 {[
@@ -187,6 +218,25 @@ const TrendingCollections: React.FC = () => {
                   "Sales",
                   "Holders",
                 ].map((header) => (
+                  <th key={header} className="font-light py-5 px-4">
+                    {header}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="">
+              {trendingCollections.map((collection) => (
+                <CollectionTableRow key={collection.id} {...collection} />
+              ))}
+            </tbody>
+          </table>
+
+          {/*Mobile view */}
+
+          <table className="sm:hidden">
+            <thead className="border-b-[0.3px] border-zinc-500 text-white/60 text-left uppercase">
+              <tr>
+                {["#", "Collection", "Floor Price"].map((header) => (
                   <th key={header} className="font-light py-5 px-4">
                     {header}
                   </th>

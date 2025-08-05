@@ -5,7 +5,7 @@ import * as z from "zod";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { links, socialLinks } from "@/constants/footer";
+import { links, socialLinks, mobileLinks } from "@/constants/footer";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -28,6 +28,12 @@ export default function Footer() {
 
   const getLinks = (category: keyof typeof links) => links[category] || [];
   const linkKeys = Object.keys(links) as (keyof typeof links)[];
+
+  const getMobileLinks = (category: keyof typeof mobileLinks) =>
+    mobileLinks[category] || [];
+  const mobileLinkKeys = Object.keys(
+    mobileLinks
+  ) as (keyof typeof mobileLinks)[];
   const currentYear = new Date().getFullYear();
 
   const containerVariants = {
@@ -49,9 +55,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="w-full h-fit text-white bg-black">
+    <footer className="w-full min-h-[1400px] sm:min-h-fit text-white bg-black">
       <motion.div
-        className="w-full px-4 md:px-0 py-8 lg:py-10 container mx-auto"
+        className="w-full px-4 py-12 md:px-8 container mx-auto"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -68,12 +74,12 @@ export default function Footer() {
               className="w-28 h-auto"
               alt="StarkBid logo"
             />
-            <p className="text-white/90 font-semibold text-xs md:text-base mb-2.5">
+            <p className="text-white/90 font-semibold text-[16px] md:text-base mb-2.5">
               Powering the Future of Digital Auctions on Starknet.
             </p>
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="w-full flex gap-2.5"
+              className="w-full flex flex-col gap-[10px] sm:flex-row"
             >
               <div className="flex-grow">
                 <input
@@ -100,7 +106,7 @@ export default function Footer() {
               <h3 className="text-white/90 font-bold text-base md:text-xl mb-4">
                 Join The Community
               </h3>
-              <div className="flex gap-4">
+              <div className="flex justify-between sm:justify-normal sm:gap-4">
                 {socialLinks.map((social) => (
                   <Link
                     key={social.name}
@@ -122,7 +128,7 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-x-3 md:gap-x-5 gap-y-10 xl:gap-x-12">
+          <div className="hidden sm:grid sm:grid-cols-3 gap-x-3 sm:gap-x-5 gap-y-10 xl:gap-x-12">
             {linkKeys.map((category) => (
               <motion.div
                 key={category}
@@ -146,28 +152,55 @@ export default function Footer() {
               </motion.div>
             ))}
           </div>
+
+          {/*Mobile view */}
+
+          <div className="flex justify-around items-center gap-[100px] sm:hidden">
+            {mobileLinkKeys.map((category) => (
+              <motion.div
+                key={category}
+                className="space-y-4"
+                variants={itemVariants}
+              >
+                <h3 className="text-white/90 font-bold text-base md:text-xl">
+                  {category}
+                </h3>
+                <nav className="flex flex-col gap-y-[20px] text-sm">
+                  {getMobileLinks(category).map((item) => (
+                    <Link
+                      key={item}
+                      href={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                      className="text-white/60 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#7C3AED] rounded"
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                </nav>
+              </motion.div>
+            ))}
+          </div>
         </div>
 
         <motion.div
           className="mt-10 pt-[30px] border-t-[0.4px] border-white/60"
           variants={itemVariants}
         >
-          <div className="flex flex-col-reverse lg:flex-row justify-center items-center gap-4">
-            <p className="text-center md:text-left text-white/90 text-sm">
-              Copyright © {currentYear} StrakBid. All rights reserved
+          <div className="flex flex-col justify-start items-start lg:flex-row sm:justify-center sm:items-center gap-5">
+            <p className="text-center md:text-left sm:text-white/90 text-sm text-[#8E9BAE]">
+              Copyright © {currentYear} StarkBid. All rights reserved
             </p>
-            <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
-              <div className="flex gap-x-2 md:gap-x-6">
+            <div className="flex flex-col justify-start items-start md:flex-row sm:items-center gap-5 md:gap-6">
+              <div className="flex flex-col gap-5 sm:flex-row sm:gap-x-2 md:gap-x-6">
                 {" "}
                 <Link
                   href="/terms-condition"
-                  className="text-white/90 text-sm hover:text-white transition-colors"
+                  className="text-[#8E9BAE] sm:text-white/90 text-sm hover:text-white transition-colors"
                 >
                   Terms & Condition
                 </Link>
                 <Link
                   href="/privacy-policy"
-                  className="text-white/90 text-sm hover:text-white transition-colors"
+                  className="text-[#8E9BAE] sm:text-white/90 text-sm hover:text-white transition-colors"
                 >
                   Privacy Policy
                 </Link>
@@ -175,7 +208,7 @@ export default function Footer() {
 
               <a
                 href="mailto:support@starkbid.com"
-                className="text-white/90 text-sm hover:text-white transition-colors "
+                className="text-[#8E9BAE] sm:text-white/90 text-sm hover:text-white transition-colors "
               >
                 support@starkbid.com
               </a>

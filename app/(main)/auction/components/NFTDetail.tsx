@@ -173,34 +173,34 @@ const NftBid = () => {
 
                         {/* Sales Deadline */}
                         <div className="text-center py-1">
-                            <p className="text-gray-400 text-sm">Sales deadline | 1d 9h left</p>
+                            <p className="text-gray-400 text-sm">Sales deadline <span className="px-2.5">|</span> 1d 9h left</p>
                         </div>
 
                         {/* Creator and Owner */}
-                        <div className="flex flex-col sm:flex-row items-center justify-between py-4 border-y border-darkerGray">
+                        <div className="flex  items-center justify-between py-4 border-y border-darkerGray">
                             <div className="flex items-center gap-4">
-                                <Image src={"/creator_nft.png"} alt="" width={60} height={60} />
+                                <Image src={"/creator_nft.png"} alt="" width={60} height={60} className="h-8 w-8 sm:w-[60px] sm:h-[60px]"/>
                                 <div>
-                                    <p className="text-lg tracking-wider">x0023y...yrte</p>
+                                    <p className="text-base sm:text-lg tracking-wider">x0023y...yrte</p>
                                     <p className="text-gray-400 text-sm tracking-wider">Creator</p>
                                 </div>
                             </div>
 
-                            <div className="hidden sm:block">
+                            <div className="block">
                                 <ArrowRight className="w-6 h-6 text-gray-400" />
                             </div>
 
                             <div className="flex items-center gap-3">
-                                <Image src={"/new_owner.png"} alt="" width={60} height={60} />
+                                <Image src={"/new_owner.png"} alt="" width={60} height={60} className="h-8 w-8 sm:w-[60px] sm:h-[60px]" />
                                 <div>
-                                    <p className="text-lg tracking-wider">x0023y...yrte</p>
+                                    <p className="text-base sm:text-lg tracking-wider">x0023y...yrte</p>
                                     <p className="text-gray-400 text-sm tracking-wider">New Owner</p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Share */}
-                        <div className="flex items-center gap-4 pb-2 border-b border-darkerGray">
+                        <div className="flex items-center gap-4 pb-3 pt-1 border-b border-darkerGray">
                             <span className="text-gray-400 text-sm">Share</span>
                             <div className="flex gap-2 text-white">
                                 <button className="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors"
@@ -214,7 +214,7 @@ const NftBid = () => {
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="space-y-3">
+                        <div className="space-y-4 pt-2">
                             <button className="w-full bg-purple text-white font-semibold py-4 rounded-xl transition-colors">
                             Buy Now
                             </button>
@@ -230,9 +230,9 @@ const NftBid = () => {
             </div>
 
             {/* Tab Content Section */}
-            <div className="w-full">
+            <div className="w-full mt-7 sm:m-auto">
                 {/* Tab Navigation */}
-                <div className="w-1/2 flex bg-[#1C1D1F] overflow-x-auto rounded-lg p-3">
+                <div className="w-full  sm:w-1/2 flex justify-between sm:justify-start bg-[#1C1D1F] overflow-x-auto rounded-lg p-3">
                     <button
                         onClick={() => setActiveTab('description')}
                         className={`px-4 py-3 text-sm font-medium transition-colors whitespace-nowrap ${activeTab === 'description'
@@ -263,7 +263,7 @@ const NftBid = () => {
                 </div>
 
                 {/* Page Content */}
-                <div className="py-4 md:py-6">
+                <div className="py-7">
                     {renderPage()}
                 </div>
             </div>

@@ -57,7 +57,7 @@ const DescriptionPage = () => {
 
     return (
         <div className="">
-            <div className="mb-6 border-b border-gray-700 pb-6 lg:w-1/2">
+            <div className="mb-6 border-b border-gray-700 pb-7 lg:w-1/2">
                 <h3 className="text-white text-lg font-semibold mb-4">About This Asset</h3>
                 <p className="text-lg leading-loose tracking-wider text-gray-400">
                     The pink-blackened horned knight is an embodiment of peace, unity and
@@ -70,7 +70,7 @@ const DescriptionPage = () => {
                 <h3 className="text-white text-lg font-semibold mb-4">About This Collection</h3>
                 <div className="flex items-center gap-3 mb-4">
                     <p className="text-gray-400 text-sm">Collection by</p>
-                    <Image src={'/creator_nft.png'} alt="creatornft" width={50} height={50} />
+                    <Image src={'/creator_nft.png'} alt="creatornft" width={50} height={50} className='w-8 h-8 sm:w-[50px] sm:h-[50px]' />
                     <p className="text-white font-medium">x0023y...yrte</p>
                 </div>
                 <p className="text-lg leading-loose tracking-wider text-gray-400">

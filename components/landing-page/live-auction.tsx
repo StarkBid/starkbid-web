@@ -7,7 +7,6 @@ const LiveAuction = () => {
   return (
     <section className="bg-black text-white py-20">
       <div className="container mx-auto flex flex-col md:flex-row gap-16 px-4">
-        
         {/* LEFT SIDE */}
         <div className="flex-1 flex flex-col justify-start gap-10">
           <div className="flex flex-col gap-4">
@@ -15,7 +14,8 @@ const LiveAuction = () => {
               <span className="text-green">● </span> Live Auctions
             </h2>
             <p className="text-lg text-gray-300 max-w-md">
-              Participate in real-time bidding wars on the most sought-after NFTs.
+              Participate in real-time bidding wars on the most sought-after
+              NFTs.
             </p>
           </div>
 
@@ -66,7 +66,6 @@ const LiveAuction = () => {
 
             {/* Overlay Content */}
             <div className="absolute inset-0 flex flex-col justify-between p-4">
-
               {/* Top Info (currently empty) */}
               <div className="flex justify-between items-start">
                 {/* (Add anything if needed later) */}
@@ -74,7 +73,6 @@ const LiveAuction = () => {
 
               {/* Bottom Info */}
               <div className="flex flex-col gap-4">
-
                 {/* User Info and Live Bid */}
                 <div className="flex justify-between items-center">
                   <div className="flex items-center gap-2">
@@ -119,7 +117,9 @@ const LiveAuction = () => {
                       className="flex flex-col items-center justify-center bg-light_grey p-4 rounded-md min-w-[60px]"
                     >
                       <span className="text-xl font-bold">{item.value}</span>
-                      <span className="text-[10px] uppercase">{item.label}</span>
+                      <span className="text-[10px] uppercase">
+                        {item.label}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -127,9 +127,12 @@ const LiveAuction = () => {
                 {/* Title and Place Bid Button */}
                 <div className="flex justify-between items-center p-4 rounded-lg">
                   <div>
-                    <h1 className="text-xl font-bold mb-1">Muittude #Facetag</h1>
+                    <h1 className="text-xl font-bold mb-1">
+                      Muittude #Facetag
+                    </h1>
                     <p className="text-gray-300 text-base">
-                      This information would contain a short description of the displayed NFT.
+                      This information would contain a short description of the
+                      displayed NFT.
                     </p>
                   </div>
 
@@ -137,13 +140,10 @@ const LiveAuction = () => {
                     Place a Bid
                   </button>
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
-
       </div>
     </section>
   );

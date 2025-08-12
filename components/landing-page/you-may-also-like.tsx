@@ -1,13 +1,17 @@
-'use client'
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { ArticleProps, articleData } from '@/constants/data';
+"use client";
+import React, { useState } from "react";
+import Image from "next/image";
+import { ArticleProps, articleData } from "@/constants/data";
 
-const ArticleCard: React.FC<ArticleProps> = ({ title, description, imageUrl }) => {
+const ArticleCard: React.FC<ArticleProps> = ({
+  title,
+  description,
+  imageUrl,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div 
+    <div
       className="w-full h-full overflow-hidden rounded-xl bg-black border border-[#292929] flex flex-col transition-colors duration-300 hover:bg-[#292929]"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -19,7 +23,9 @@ const ArticleCard: React.FC<ArticleProps> = ({ title, description, imageUrl }) =
               src={`/${imageUrl}`}
               alt={title}
               fill
-              className={`object-cover transition-all duration-300 ease-in-out ${isHovered ? 'scale-[1.03]' : ''}`}
+              className={`object-cover transition-all duration-300 ease-in-out ${
+                isHovered ? "scale-[1.03]" : ""
+              }`}
               sizes="(max-width: 900px) 100vw, 33vw"
             />
           </div>
@@ -31,9 +37,9 @@ const ArticleCard: React.FC<ArticleProps> = ({ title, description, imageUrl }) =
           </button>
         )}
       </div>
-      <div className="p-6 flex-grow flex flex-col">
-        <h2 className="text-xl font-bold text-white mb-3">{title}</h2>
-        <p className="text-gray-300 text-sm">{description}</p>
+      <div className="px-[11.09px] pt-4 py-7 sm:p-6 flex-grow flex flex-col gap-[12px]">
+        <h2 className="text-[16px] sm:text-xl font-bold text-white">{title}</h2>
+        <p className="text-gray-300 text-sm font-medium">{description}</p>
       </div>
     </div>
   );
@@ -43,27 +49,68 @@ const MayAlsoLike: React.FC = () => {
   return (
     <div className="w-full bg-black text-white py-8 px-4">
       <div className="max-w-[85.5rem] mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <div className='w-[46%]'>
-            <h1 className="text-3xl font-bold mb-3">You might be interested by</h1>
+        <div className="hidden sm:flex justify-between items-center mb-6">
+          <div className="w-[46%]">
+            <h1 className="text-3xl font-bold mb-3">
+              You might be interested by
+            </h1>
             <p className="text-gray-300">
-              We&apos;ve written a few articles about StarkBid and how to run your NFTs better. Stay
-              updated with the latest in the world of NFTs, auctions, and blockchain innovations.
+              We&apos;ve written a few articles about StarkBid and how to run
+              your NFTs better. Stay updated with the latest in the world of
+              NFTs, auctions, and blockchain innovations.
             </p>
           </div>
           <button className="bg-[#272729] hover:bg-[#2e2e2f] text-white px-4 py-2 rounded-lg flex items-center">
             View all
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5 ml-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fillRule="evenodd"
+                d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                clipRule="evenodd"
+              />
             </svg>
           </button>
         </div>
+
+        {/*Mobile view */}
+
+        <div className="sm:hidden flex flex-col gap-[26px] mb-[26px]">
+          <div className="flex flex-col gap-[15px]">
+            <div className="font-bold text-[30px] leading-[100%] space-y-4">
+              You might be interested by
+            </div>
+            <div className="font-medium text-[16px] leading-[25px] space-y-4">
+              We&apos;ve written a few articles about StarkBid and how to run
+              your NFTs better. Stay updated with the latest in the world of
+              NFTs, auctions, and blockchain innovations.
+            </div>
+          </div>
+          <div>
+            <button className="bg-[#272729] hover:bg-[#2e2e2f] text-white px-4 py-2 rounded-lg flex items-center">
+              View all
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 ml-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-[2em] ">
-          {articleData.map(article => (
-            <ArticleCard
-              key={article.id}
-              {...article}
-            />
+          {articleData.map((article) => (
+            <ArticleCard key={article.id} {...article} />
           ))}
         </div>
       </div>

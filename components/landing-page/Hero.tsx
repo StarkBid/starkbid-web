@@ -68,22 +68,23 @@ const Hero = () => {
   // //   }
   // // };
 
-  const goToSlide = useCallback((index: React.SetStateAction<number>) => {
-    if (isTransitioning) return;
+  const goToSlide = useCallback(
+    (index: React.SetStateAction<number>) => {
+      if (isTransitioning) return;
 
-    setIsTransitioning(true);
-    setActiveIndex(index);
+      setIsTransitioning(true);
+      setActiveIndex(index);
 
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 500);
-  }, [isTransitioning]
-  )
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 500);
+    },
+    [isTransitioning]
+  );
   const nextSlide = useCallback(() => {
     const newIndex = (activeIndex + 1) % nftItems.length;
     goToSlide(newIndex);
-  }, [activeIndex, goToSlide]
-  )
+  }, [activeIndex, goToSlide]);
   const prevSlide = () => {
     const newIndex = (activeIndex - 1 + nftItems.length) % nftItems.length;
     goToSlide(newIndex);
@@ -106,23 +107,23 @@ const Hero = () => {
 
   return (
     <div
-      className="mt-4 pb-6 sm:mt-6 md:mt-[22px] relative overflow-hidden rounded-xl w-full max-w-[1320px] mx-auto"
+      className="pb-6 sm:mt-6 md:mt-[22px] relative sm:overflow-hidden sm:rounded-xl w-full max-w-[1320px] mx-auto"
       style={{ height: "clamp(400px, 50vw, 525px)" }}
     >
       <div
         className="relative w-full h-full"
         ref={carouselRef}
-      // onTouchStart={handleTouchStart}
-      // onTouchMove={handleTouchMove}
-      // onTouchEnd={handleTouchEnd}
-      // onMouseDown={handleMouseDown}
-      // onMouseMove={handleMouseMove}
-      // onMouseUp={handleMouseUp}
-      // onMouseLeave={handleMouseLeave}
+        // onTouchStart={handleTouchStart}
+        // onTouchMove={handleTouchMove}
+        // onTouchEnd={handleTouchEnd}
+        // onMouseDown={handleMouseDown}
+        // onMouseMove={handleMouseMove}
+        // onMouseUp={handleMouseUp}
+        // onMouseLeave={handleMouseLeave}
       >
         {/* Slides */}
         <div
-          className="flex transition-transform duration-500 ease-in-out h-full"
+          className="hidden sm:flex sm:flex-row transition-transform duration-500 ease-in-out h-full"
           style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         >
           {nftItems.map((nft, index) => (
@@ -220,6 +221,103 @@ const Hero = () => {
           ))}
         </div>
 
+        {/*Mobile view */}
+
+        <div
+          className="flex transition-transform duration-500 sm:hidden ease-in-out h-full"
+          style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        >
+          {nftItems.map((nft, index) => (
+            <div
+              key={nft.id}
+              className="flex-shrink-0 w-full h-[600px] relative text-white"
+              style={{
+                backgroundImage: `url(/svgs/hero-bg.svg)`,
+                backgroundSize: "150%",
+                backgroundPositionX: "40%",
+                backgroundPositionY: "30%",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
+              {/* Gradient overlay - positioned on top of the image */}
+              <div
+                className="absolute top-0 right-0 bottom-0 left-0 z-10 pointer-events-none"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(16, 18, 19, 0) 0%, #101213 63.59%)",
+                }}
+              ></div>
+
+              {/* Content overlay */}
+              <div className="absolute inset-0 w-full z-20 flex flex-col justify-start px-4 pt-56 pb-20">
+                <div className="flex flex-col gap-[20px]">
+                  <div className="flex flex-col gap-[10px]">
+                    <div>
+                      <div className="font-bold text-[30px]">{nft.title}</div>
+                      <div className="flex justify-between">
+                        <div className="flex flex-col gap-[4px]">
+                          <div className="text-[14px] font-semibold">
+                            Creator
+                          </div>
+                          <div className="flex items-center gap-[2px]">
+                            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-purple-600 mr-2 flex items-center justify-center text-xs text-white">
+                              {nft.creator?.charAt(0) || "A"}
+                            </div>
+                            <div className="text-[14px] font-semibold">
+                              {nft.creator || "Anonymous"}
+                            </div>
+                            {nft.verified && (
+                              <div className="ml-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs">
+                                ✓
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                        <div>
+                          <button
+                            onClick={() => toggleIsLiked(index)}
+                            className="text-gray-400"
+                          >
+                            {isLiked[index] ? (
+                              <BsHeartFill className="text-ash" size={20} />
+                            ) : (
+                              <BsHeart size={20} />
+                            )}
+                          </button>
+                        </div>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <div className="text-[14px] font-semibold">
+                          Current bid
+                        </div>
+                        <div className="text-[16px] font-bold">
+                          {nft.currentBid}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-[16px] font-medium">
+                      {nft.description}
+                    </div>
+                    <div className="text-[14px] font-semibold flex gap-[10px]">
+                      <div>{nft.minted}</div>
+                      <div>|</div>
+                      <div>{nft.timeLeft}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-[10px]">
+                    <button className="bg-[#8C62F2] text-white font-bold py-[10px] px-[22px] rounded-[10px] w-full">
+                      Place a bid
+                    </button>
+                    <button className="bg-white text-black font-bold py-[10px] px-[22px] rounded-[10px] w-full">
+                      Mint for free
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
         {/* Navigation arrows */}
         <button
           className="absolute left-1 sm:left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-black/80 rounded-full flex items-center justify-center text-white z-30 hover:bg-black/70 transition-colors"
@@ -237,15 +335,16 @@ const Hero = () => {
         </button>
 
         {/* Indicator dots */}
-        <div className="absolute sm:-bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-[1000]">
+        <div className="absolute sm:-bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2 sm:space-x-3 z-[1000] pt-60">
           {nftItems.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-1 rounded-full transition-all duration-300 ${index === activeIndex
-                ? "w-20 sm:w-20 bg-white"
-                : "w-20 bg-gray-600"
-                }`}
+              className={`h-1 rounded-full transition-all duration-300 ${
+                index === activeIndex
+                  ? "w-20 sm:w-20 bg-white"
+                  : "w-20 bg-gray-600"
+              }`}
             />
           ))}
         </div>

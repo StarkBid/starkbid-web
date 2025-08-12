@@ -29,3 +29,22 @@ export const socialLinks = [
     url: "https://instagram.com",
   },
 ];
+
+export const mobileLinks = {
+  Collections: [
+    "Art",
+    "Photography",
+    "Music",
+    "Game",
+    "Community",
+    "Lifestyle",
+  ],
+  Resources: [
+    "Explore",
+    "Support",
+    "Blog",
+    "Terms of Service",
+    "Privacy policy",
+    "Copyright",
+  ],
+};

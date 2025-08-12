@@ -230,7 +230,7 @@ const Hero = () => {
           {nftItems.map((nft, index) => (
             <div
               key={nft.id}
-              className="flex-shrink-0 w-full h-[600px] relative"
+              className="flex-shrink-0 w-full h-[600px] relative text-white"
               style={{
                 backgroundImage: `url(/svgs/hero-bg.svg)`,
                 backgroundSize: "150%",

@@ -100,8 +100,8 @@ const NFTCard: React.FC<NFTCardProps> = ({
       </div>
 
       {/* Mobile content */}
-      <div className="px-[4.21px] py-[5.26px] flex flex-col gap-[10px] w-fill sm:hidden">
-        <div className="font-bold text-[12px] text-white">{title}</div>
+      <div className="px-[10px] py-[5.26px] flex flex-col gap-[10px] w-fill sm:hidden">
+        <div className="font-bold text-[10px] text-white">{title}</div>
         <div className="flex justify-between items-center">
           <div className="font-semibold text-[10px] text-[#8E9BAE]">
             Current Bid

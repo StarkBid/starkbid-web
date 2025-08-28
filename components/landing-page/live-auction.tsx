@@ -81,7 +81,7 @@ const LiveAuction = () => {
 
   return (
     <section className="bg-black text-white py-20">
-      <div className="container mx-auto flex flex-col md:flex-row gap-16 px-4">
+      <div className="container hidden mx-auto sm:flex sm:flex-col md:flex-row gap-16 px-4">
         {/* LEFT SIDE */}
         <div className="flex-1 flex flex-col justify-start gap-10">
           <div className="flex flex-col gap-4">
@@ -255,6 +255,146 @@ const LiveAuction = () => {
               ></button>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Mobile view */}
+      <div className="px-4 flex flex-col gap-5">
+        <div className="flex flex-col gap-[15px]">
+          <h2 className="text-4xl font-bold leading-tight text-green-400">
+            <span className="text-green">● </span> Live Auctions
+          </h2>
+          <p className="text-lg text-gray-300 max-w-md">
+            Participate in real-time bidding wars on the most sought-after NFTs.
+          </p>
+        </div>
+        <div className="flex flex-col gap-12">
+          {sections.map((item) => (
+            <div key={item.name} className="flex flex-col gap-[26px]">
+              <div className="flex flex-col gap-[15px]">
+                <div className="text-white text-[25px] font-bold font-sans">
+                  {item.title}
+                </div>
+                <div className="text-white text-[16px] font-medium font-sans">
+                  {item.description}
+                </div>
+              </div>
+              <div>
+                <button className="py-[12.93px] px-[19.4px] bg-[#1C1D1F] text-[14px] font-bold text-white font-sans rounded-[7px]">
+                  See More →
+                </button>
+              </div>
+              <div>
+                <AnimatePresence mode="wait">
+                  {nft.map((item) => (
+                    <motion.div
+                      key={item.nftAlt}
+                      className={`relative rounded-xl bg-gray-900 shadow-2xl w-full h-full max-w-[683px] mx-auto ${
+                        isActive === item.nftAlt ? "block" : "hidden"
+                      }`}
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      exit={{ x: -100, opacity: 0 }}
+                      transition={{ duration: 0.7, ease: "easeInOut" }}
+                    >
+                      {/* NFT Image */}
+                      <Image
+                        src={item.nftImg}
+                        alt={item.nftAlt}
+                        width={343}
+                        height={591}
+                        className="object-cover w-full h-[591px]"
+                        priority
+                      />
+
+                      {/* Dark Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+
+                      {/* Overlay Content */}
+                      <div className="absolute inset-x-0 bottom-0 h-1/2 flex flex-col justify-between p-4">
+                        {/* Top Info (currently empty) */}
+                        <div className="flex justify-between items-start">
+                          {/* (Add anything if needed later) */}
+                        </div>
+
+                        <div className="flex flex-col gap-[10px]">
+                          <div className="flex flex-col gap-[10px]">
+                            <div className="flex flex-col gap-[10px]">
+                              <div className="flex items-center gap-2">
+                                <Image
+                                  src={item.userImg}
+                                  alt={item.userAlt}
+                                  width={24}
+                                  height={24}
+                                  className="rounded-full"
+                                />
+                                <span className="text-base">
+                                  By <strong>{item.user}</strong>
+                                </span>
+                                {item.isVerified ? (
+                                  <Image
+                                    src="/tick.png"
+                                    alt="Verified Tick"
+                                    width={24}
+                                    height={24}
+                                    className="rounded-full"
+                                  />
+                                ) : null}
+                              </div>
+                              <div className="flex flex-wrap gap-4 rounded-lg w-fit">
+                                {[
+                                  { label: "days", value: "2" },
+                                  { label: "hrs", value: "20" },
+                                  { label: "mins", value: "10" },
+                                  { label: "secs", value: "18" },
+                                ].map((item, idx) => (
+                                  <div
+                                    key={idx}
+                                    className="flex flex-col items-center justify-center bg-light_grey p-4 rounded-md min-w-[79px]"
+                                  >
+                                    <span className="text-xl font-bold">
+                                      {item.value}
+                                    </span>
+                                    <span className="text-[10px] uppercase">
+                                      {item.label}
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            <div className="flex items-center justify-between">
+                              <div className="text-[14px] font-bold font-sans flex items-center gap-1">
+                                <span className="text-green text-2xl">● </span>
+                                Live Bid
+                              </div>
+                              <div className="text-[20px] font-bold font-sans">
+                                {item.bidAmount}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="flex flex-col gap-[10px]">
+                            <div className="flex flex-col gap-[5px]">
+                              <div className="font-bold font-sans text-[24px]">
+                                {item.title}
+                              </div>
+                              <div className="font-semibold font-sans text-[14px]">
+                                {item.description}
+                              </div>
+                            </div>
+                            <div>
+                              <button className="bg-[#8C62F2] py-[12.93px] px-[19.4px] text-white text-[14px] font-bold font-sans w-full rounded-[7px]">
+                                Place a bid
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

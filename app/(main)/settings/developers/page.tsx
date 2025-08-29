@@ -20,10 +20,10 @@ export default function DevelopersPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
     setUserEmail(email);
     setVerificationStatus("pending");
     setIsSubmitting(false);
@@ -34,7 +34,7 @@ export default function DevelopersPage() {
     switch (status) {
       case "pending":
         return (
-          <Badge 
+          <Badge
             className={cn(
               "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
               "hover:bg-yellow-500/30"
@@ -46,7 +46,7 @@ export default function DevelopersPage() {
         );
       case "accepted":
         return (
-          <Badge 
+          <Badge
             className={cn(
               "bg-green-500/20 text-green-400 border-green-500/30",
               "hover:bg-green-500/30"
@@ -73,7 +73,7 @@ export default function DevelopersPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8">
+    <div className="space-y-8">
       {/* Header */}
       <div className="space-y-4">
         <h1 className="text-3xl font-bold text-white">Developers</h1>
@@ -113,7 +113,7 @@ export default function DevelopersPage() {
                     <span className="text-ash">{userEmail}</span>
                   </div>
                   <p className="text-sm text-ash mt-1">
-                    {verificationStatus === "pending" 
+                    {verificationStatus === "pending"
                       ? "We've sent a verification email. Please check your inbox and follow the instructions."
                       : "Your email has been verified and you have access to the developer API."
                     }

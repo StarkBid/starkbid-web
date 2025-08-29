@@ -32,15 +32,15 @@ export function SettingsLayout({ children }: { children: React.ReactNode }) {
   }, [toggleSidebar]);
 
   return (
-    <div className="min-h-screen bg-true_black flex flex-col">
+    <div className="min-h-screen max-w-[1440px] mx-auto bg-true_black flex flex-col">
       <div className="flex flex-1">
         {/* Sidebar Component */}
         <SettingsSidebar isOpen={sidebarOpen} onClose={closeSidebar} />
 
         {/* Main Content */}
         <main className="flex-1 flex flex-col">
-          <div className="flex-1">
-            <div className="max-w-full mx-auto">{children}</div>
+          <div className="flex-1 py-4">
+            <div className="max-w-7xl mx-auto px-4 md:px-8">{children}</div>
           </div>
         </main>
       </div>

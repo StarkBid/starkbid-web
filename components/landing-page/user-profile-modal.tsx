@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { CircleX, PencilLine } from "lucide-react";
 import { useDisconnect } from "@starknet-react/core";
@@ -29,7 +31,8 @@ const UserProfileModal = ({
           quality={90}
         />
       ),
-      route: "",
+      route: "/profile", 
+      // TODO: Add current user profile page implementation
     },
     {
       name: "NFTs",
@@ -42,7 +45,7 @@ const UserProfileModal = ({
           quality={90}
         />
       ),
-      route: "",
+      route: "/nfts",
     },
     {
       name: "Collections",
@@ -55,7 +58,7 @@ const UserProfileModal = ({
           quality={90}
         />
       ),
-      route: "",
+      route: "/collections",
     },
     {
       name: "Notification",
@@ -68,7 +71,7 @@ const UserProfileModal = ({
           quality={90}
         />
       ),
-      route: "",
+      route: "/settings/preference",
     },
     {
       name: "Activity",
@@ -81,7 +84,7 @@ const UserProfileModal = ({
           quality={90}
         />
       ),
-      route: "",
+      route: "/auction",
     },
     {
       name: "Offers/Bids",
@@ -94,7 +97,8 @@ const UserProfileModal = ({
           quality={90}
         />
       ),
-      route: "",
+      route: "/auction",
+      // TODO: Offers/Bids overview page implementation
     },
     {
       name: "Settings",
@@ -107,7 +111,7 @@ const UserProfileModal = ({
           quality={90}
         />
       ),
-      route: "",
+      route: "/settings",
     },
   ];
 
@@ -320,12 +324,14 @@ const UserProfileModal = ({
                   </div>
                 </div>
                 <div>
-                  <button className="bg-[#1C1D1F] py-[10px] md:py-[12.93px] px-[16px] md:px-[19.4px] flex justify-center items-center gap-[5px] md:gap-[6.47px] rounded-[6px] md:rounded-[7px] w-full h-[40px] md:h-[45px]">
+                  <a 
+                    href="/settings/wallet"
+                    className="bg-[#1C1D1F] py-[10px] md:py-[12.93px] px-[16px] md:px-[19.4px] flex justify-center items-center gap-[5px] md:gap-[6.47px] rounded-[6px] md:rounded-[7px] w-full h-[40px] md:h-[45px]">
                     <PencilLine size={20} className="md:w-6 md:h-6" />
                     <div className="font-sans font-bold text-[14px] md:text-[16px]">
                       Manage Wallet
                     </div>
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>

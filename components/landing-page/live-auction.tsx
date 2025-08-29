@@ -341,7 +341,7 @@ const LiveAuction = () => {
                                   />
                                 ) : null}
                               </div>
-                              <div className="flex flex-wrap gap-4 rounded-lg w-fit">
+                              <div className="flex flex-wrap rounded-lg items-center justify-between">
                                 {[
                                   { label: "days", value: "2" },
                                   { label: "hrs", value: "20" },
@@ -350,7 +350,7 @@ const LiveAuction = () => {
                                 ].map((item, idx) => (
                                   <div
                                     key={idx}
-                                    className="flex flex-col items-center justify-center bg-light_grey p-4 rounded-md min-w-[79px]"
+                                    className="flex flex-col items-center justify-center bg-light_grey p-6 rounded-md"
                                   >
                                     <span className="text-xl font-bold">
                                       {item.value}

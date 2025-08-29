@@ -28,13 +28,13 @@ export default function WalletPage() {
   };
 
   return (
-    <div className="px-8 py-4">
+    <div>
       <div className="flex flex-col gap-[10px]">
         <div className="font-bold text-[20px] text-white font-sans">Wallet</div>
-        <div className="text-[14px] text-[#8E9BAE] font-sans">
+        <p className="text-[14px] text-[#8E9BAE] font-sans">
           Select and manage your notification preferences to control how and
           when you receive updates to your email and in-app.
-        </div>
+        </p>
       </div>
       <div className="flex flex-col gap-[30px] pt-[30px]">
         <div>

@@ -209,7 +209,7 @@ export function ProfileSettingsForm() {
   };
 
   return (
-    <div className="space-y-8 max-w-4xl mx-auto p-4">
+    <div className="space-y-8">
       {/* Cover Photo Section */}
       <Card className="bg-gray-900 border-gray-800 mb-20">
         <div className="relative">

@@ -259,7 +259,7 @@ const LiveAuction = () => {
       </div>
 
       {/* Mobile view */}
-      <div className="px-4 flex flex-col gap-5">
+      <div className="px-4 flex flex-col gap-5 sm:hidden">
         <div className="flex flex-col gap-[15px]">
           <h2 className="text-4xl font-bold leading-tight text-green-400">
             <span className="text-green">● </span> Live Auctions
@@ -289,7 +289,7 @@ const LiveAuction = () => {
                   {nft.map((item) => (
                     <motion.div
                       key={item.nftAlt}
-                      className={`relative rounded-xl bg-gray-900 shadow-2xl w-full h-full max-w-[683px] mx-auto ${
+                      className={`relative rounded-xl pb-20 bg-gray-900 shadow-2xl w-full h-full max-w-[683px] mx-auto ${
                         isActive === item.nftAlt ? "block" : "hidden"
                       }`}
                       initial={{ x: 100, opacity: 0 }}
